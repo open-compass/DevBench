@@ -82,10 +82,8 @@ docker run -it --name $CONTAINER_NAME devbench:$VERSION bash
 
 ### 4. Clone our Devbench
 
-TODO @Bowen
 ```shell
-git clone https://github.com/libowen2121/DevBench.git
-git checkout feat_data
+git clone git@github.com:open-compass/DevBench.git
 ```
 
 ### 5. Run sanity checks
