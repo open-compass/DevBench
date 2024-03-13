@@ -296,6 +296,7 @@ python run.py --config Implementation --input_path ../../benchmark_data/python/T
 - input_path (*str*) - Specifies the repo path.
 - project_name (*str*) - Specifies the repo name. If empty, defaults to the last segment of `input_path` (i.e., `input_path.split('/')[-1]`)
 - model (*str*) - Specifies the name of the language model: `gpt-3.5-turbo` | `gpt-4` | `gpt-4-32k` | `gpt-4-turbo` | `claude-2` | `claude-2.1` | `codellama-7b` | `codellama-13b` | `codellama-34b` | `deepseek-coder-1.3b` | `deepseek-coder-6.7b` | `deepseek-coder-33b` | `customized-model`.
+- customized_model_name (Optional, *str*) - Specifies the custom model name if the value of the 'model' parameter is 'customized-model'.
 - model_source (*str*) - Specifies the model type, open source model or openai closed source model : `open_source` ｜ `openai`
 - review (*str*) - Specifies the review mode: `none` | `normal` | `execution`.     
   - `none`: a single forward pass of Coding. 
