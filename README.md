@@ -287,7 +287,7 @@ For additional models, add a new field as shown below.
 
 ```
 cd agent_sysyem/baseline
-python run.py --config EnvironmentSetup --input_path ../../benchmark_data/python/Hybrid_Images/ --model deepseek-coder-33b --model_source open_source  --review execution --evaluate
+python run.py --config Implementation --input_path ../../benchmark_data/python/TextCNN/ --model gpt-4-turbo-new --model_source openai  --review execution --evaluate
 ```
 
 #### Parameters
