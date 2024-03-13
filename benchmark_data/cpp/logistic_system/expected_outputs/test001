@@ -1,0 +1,24 @@
+Welcome!
+AccountId: root_id
+UserName: RootUser
+UserPhone: 1234567890
+Money: 100
+Address: RootAddress
+UserType: root
+Wrong operation name.
+Rest money: 1e+02
+Expressage id: KD00000001
+Sender: test_id_1
+Recipient: test_id_2
+Send Time: 2020-01-01
+Status: Unsigned
+Sign Time: NULL
+Remark: TestRemark
+Expressage id: KD00000002
+Sender: test_id_1
+Recipient: test_id_2
+Send Time: 2020-01-01
+Status: Signed
+Sign Time: 2020-01-02
+Remark: TestRemark
+Bye!

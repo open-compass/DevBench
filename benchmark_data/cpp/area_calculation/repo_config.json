@@ -1,0 +1,54 @@
+{
+    "PRD": "PRD.md",
+    "UML_class": "UML_class.md",
+    "UML_sequence": "UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "architecture_design.md",
+    "language": "cpp",
+    
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "required_files": ["expected_outputs/*", "inputs/*", "makefile_test"],
+    "usage_examples": "examples",
+    "setup_shell_script": "setup_shell_script.sh",
+
+    
+    "unit_test_linking": {
+        "unit_tests/test_Circle.cpp": ["include/Circle.hpp"],    
+        "unit_tests/test_Rectangle.cpp": ["include/Rectangle.h", "src/Rectangle.cpp"],    
+        "unit_tests/test_Square.cpp": ["include/Square.hpp"] 
+    },
+    
+    "code_file_DAG": {
+        "src/Shape.cpp": ["include/Shape.h"],
+        "include/Circle.hpp": ["src/Shape.cpp"],
+        "include/Rectangle.h": ["src/Shape.cpp"],
+        "src/Rectangle.cpp": ["include/Rectangle.h"],
+        "include/Square.hpp": ["src/Rectangle.cpp"],
+        "src/main.cpp": ["include/Circle.hpp", "include/Square.hpp"],
+        "makefile": ["src/main.cpp"]
+    },
+
+    "unit_test_script": "make test -f makefile_test; make coverage -f makefile_test",
+    "acceptance_test_script": "chmod +x acceptance_tests/test.sh;./acceptance_tests/test.sh",
+    
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_Circle.cpp": "Develop unit tests in 'unit_tests/test_Circle.cpp' for the `Circle` class. Test functionalities such as calculating the area, ensuring the correctness of the calculated value against expected results. Dependencies: gtest, cmath. Only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_Rectangle.cpp": "Create unit tests in 'unit_tests/test_Rectangle.cpp' for the `Rectangle` class. Ensure tests cover the calculation of the rectangle's area, comparing the computed area to known values. Dependencies: gtest, cmath. Only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_Square.cpp": "Formulate unit tests in 'unit_tests/test_Square.cpp' for the `Square` class. Verify the area calculation functionality, checking the accuracy of the output with expected square areas. Dependencies: gtest, cmath. Only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_Circle.cpp": "In 'unit_tests/test_Circle.cpp', write detailed unit tests for the `Circle` class. Test1: 'CalcArea' should validate the area calculation for different circle radii. Dependencies: gtest, cmath. Only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_Rectangle.cpp": "In 'unit_tests/test_Rectangle.cpp', draft detailed unit tests for the `Rectangle` class. Test1: 'CalcArea' to validate area calculation for rectangles of various dimensions. Dependencies: gtest, cmath. Only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_Square.cpp": "In 'unit_tests/test_Square.cpp', create detailed unit tests for the `Square` class. Test1: 'CalcArea' for verifying the area calculation of squares with different side lengths. Dependencies: gtest, cmath. Only use dependencies and modules mentioned in this prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test.sh": "Create a script named 'acceptance_tests/test.sh' to conduct comprehensive acceptance testing for an area calculation program. The script should cover the full validation of the program's functionality, focusing on:\n\n1.Ability to calculate areas of various geometric shapes accurately.2.\nRobust error handling for invalid inputs.\n3.Precise area calculation output.\n\nThe testing script should include steps for compiling the program, running it with a predefined set of standard input files from the 'input' folder, and comparing the program's output against the expected results in the 'expected_outputs' folder. The objective is to ensure the program's effectiveness and accuracy in processing different geometric shapes."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test.sh": "Develop a detailed acceptance testing script, 'acceptance_tests/test.sh', for an area calculation program. The script should consist of the following specific tests:\n\n1.Test1 - Run the program with various geometric shape inputs from the 'input' folder, and compare the outputs with the expected results in the 'expected_outputs' folder to assess handling of different shapes.\n2.Test2 - Test the program's response to invalid or malformed inputs, emphasizing error handling.\n3.Test3 - Confirm the accuracy of area calculations by comparing the program's output against expected results for various shapes.\n\nInclude steps in the script for program compilation, input validation, and output comparison. This script aims to thoroughly evaluate the program's performance and reliability under various input scenarios."
+    },
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

@@ -1,0 +1,60 @@
+# gcov
+COVFLAGS = -fprofile-arcs -ftest-coverage
+
+# Variables
+CXX = g++
+CC = gcc   # Adding a variable for the C compiler
+CXXFLAGS = -std=c++17 -Iinclude
+CFLAGS = -Iinclude  # Flags for C compilation
+SRCDIR = src
+INCDIR = include
+INCDIR_TEST = .
+OBJS = $(SRCDIR)/archive.o $(SRCDIR)/miniz.c.o $(SRCDIR)/tinyxml2.o $(SRCDIR)/utils.o $(SRCDIR)/workbook.o $(SRCDIR)/worksheet.o $(SRCDIR)/main.o
+TARGET = xlsx2csv
+
+TEST_DIR = ./unit_tests
+TEST_OBJS = ${TEST_DIR}/test_utils.o ${TEST_DIR}/test_archive.o ${TEST_DIR}/test_workbook.o
+# TEST_OBJS = ${TEST_DIR}/test_worksheet.o
+TEST_TARGET = run_tests
+GTEST_LIB = -lgtest -lgtest_main -pthread
+
+# Default target
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) $(COVFLAGS) -o $@ $^ -lgcov 
+
+$(SRCDIR)/%.o: $(SRCDIR)/%.cpp $(INCDIR)/%.h
+	$(CXX) $(CXXFLAGS) $(COVFLAGS) -c -o $@ $<
+
+# Add a rule for miniz.c
+$(SRCDIR)/miniz.c.o: $(SRCDIR)/miniz.c
+	$(CC) $(CFLAGS) -c -o $@ $<
+
+# Add a rule for tinyxml2.cpp
+$(SRCDIR)/tinyxml2.o: $(SRCDIR)/tinyxml2.cpp
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(SRCDIR)/main.o: $(SRCDIR)/main.cpp
+	$(CXX) $(CXXFLAGS) $(COVFLAGS) -c -o $@ $<
+
+# Test targets
+
+PROD_OBJS = $(filter-out $(SRCDIR)/main.o, $(OBJS))
+
+$(TEST_TARGET): $(PROD_OBJS) $(TEST_OBJS)
+	$(CXX) $(CXXFLAGS) $(COVFLAGS) -o $@ $^ $(GTEST_LIB) -lgcov
+
+$(TESTDIR)/%.o: $(TESTDIR)/%.cpp
+	$(CXX) $(CXXFLAGS) $(COVFLAGS) -c -o $@ $<
+
+test: $(TEST_TARGET)
+	./$(TEST_TARGET)
+
+coverage: test
+	gcov -r -b $(SRCDIR)/*.cpp
+
+clean:
+	rm -f $(OBJS) $(TARGET) $(TEST_TARGET) $(TEST_OBJS) src/*.gcda src/*.gcno src/*.gcov *.gcda *.gcno *.gcov
+
+.PHONY: all clean

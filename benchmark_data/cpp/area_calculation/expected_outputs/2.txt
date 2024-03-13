@@ -1,0 +1,17 @@
+Shape()
+Circle(r)
+28.2743
+Shape()
+Rectangle(w, h)
+24
+Shape()
+Rectangle(w, h)
+Square(l)
+10000
+~Square()
+~Rectangle()
+~Shape()
+~Rectangle()
+~Shape()
+~Circle()
+~Shape()

@@ -1,0 +1,60 @@
+{
+    "language": "cpp",
+    "PRD": "PRD.md",
+    "UML_class": "UML_class.md",
+    "UML_sequence": "UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "architecture_design.md",
+    
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "required_files": ["expected_outputs/*", "inputs/*", "architecture_design.md", "makefile_test", "examples/*"],
+    "setup_shell_script": "setup_shell_script.sh",
+    "unit_test_linking": {
+        "unit_tests/test_al_graph.cpp": ["include/al_graph.hpp"],
+        "unit_tests/test_am_graph.cpp": ["include/am_graph.hpp"],
+        "unit_tests/test_queue.cpp": ["include/queue.hpp"],
+        "unit_tests/test_stack.cpp": ["include/stack.hpp"]
+    },
+    
+    "code_file_DAG": {
+        "include/al_graph.hpp": ["include/queue.hpp", "include/stack.hpp"],
+        "src/main.cpp": ["include/al_graph.hpp", "include/am_graph.hpp", "include/queue.hpp", "include/stack.hpp"]
+    },
+
+    "unit_test_fine_scripts": {
+        "unit_tests/test_al_graph.cpp": "gtest --output=unit_test_report.json unit_tests/test_al_graph.cpp",
+        "unit_tests/test_am_graph.cpp": "gtest --output=unit_test_report.json unit_tests/test_am_graph.cpp",
+        "unit_tests/test_queue.cpp": "gtest --output=unit_test_report.json unit_tests/test_queue.cpp",
+        "unit_tests/test_stack.cpp": "gtest --output=unit_test_report.json unit_tests/test_stack.cpp"
+    },
+    
+    "unit_test_script": "make test -f makefile_test; make coverage",
+    "acceptance_test_script": "chmod +x acceptance_tests/test.sh;./acceptance_tests/test.sh",
+
+    
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_al_graph.cpp": "In 'unit_tests/test_al_graph.cpp', draft unit tests for the AdjacencyListGraph. Function Signatures: SetUp(), VertexNumberTest(), etc. General Purpose: Test the functionality of AdjacencyListGraph. Key Tests: Check vertex and arc initialization, DFS and BFS traversals.",
+        "unit_tests/test_am_graph.cpp": "In 'unit_tests/test_am_graph.cpp', create unit tests for the AdjacencyMatrixGraph. Function Signatures: SetUp(), VertexSetTest(), etc. General Purpose: Test the functionality of AdjacencyMatrixGraph. Key Tests: Validate vertex and arc settings, and verify vertex location.",
+        "unit_tests/test_queue.cpp": "In 'unit_tests/test_queue.cpp', compose unit tests for the Queue class. Function Signatures: IsEmptyOnInitialization(), PushAndFront(), etc. General Purpose: Test the functionality of the Queue class. Key Tests: Validate queue operations like initialization, enqueue, dequeue, and error handling.",
+        "unit_tests/test_stack.cpp": "In 'unit_tests/test_stack.cpp', formulate unit tests for the Stack class. Function Signatures: IsEmptyOnInitialization(), PushAndTop(), etc. General Purpose: Test the functionality of the Stack class. Key Tests: Assess stack operations such as push, pop, and error handling."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_al_graph.cpp": "In 'unit_tests/test_al_graph.cpp', write detailed unit tests for the AdjacencyListGraph. Function Signatures: SetUp(), VertexNumberTest(), etc. Function Descriptions: SetUp() initializes the graph, VertexNumberTest() checks vertex initialization. Key Tests: Test 1: VertexNumberTest, Test 2: ArcNumberTest, Test 3: TestDFSNoRecursionAdjacencyList.",
+        "unit_tests/test_am_graph.cpp": "In 'unit_tests/test_am_graph.cpp', draft detailed unit tests for the AdjacencyMatrixGraph. Function Signatures: SetUp(), VertexSetTest(), etc. Function Descriptions: SetUp() initializes the graph, VertexSetTest() checks vertex settings. Important Tests: Test 1: VertexSetTest, Test 2: ArcSetTest.",
+        "unit_tests/test_queue.cpp": "In 'unit_tests/test_queue.cpp', develop detailed unit tests for the Queue class. Function Signatures: IsEmptyOnInitialization(), PushAndFront(), etc. Function Descriptions: IsEmptyOnInitialization() checks initial queue state, PushAndFront() tests enqueue operation. Principal Tests: Test 1: IsEmptyOnInitialization, Test 2: PushAndFront, Test 3: Pop.",
+        "unit_tests/test_stack.cpp": "In 'unit_tests/test_stack.cpp', construct detailed unit tests for the Stack class. Function Signatures: IsEmptyOnInitialization(), PushAndTop(), etc. Function Descriptions: IsEmptyOnInitialization() checks initial stack state, PushAndTop() tests push operation. Main Tests: Test 1: IsEmptyOnInitialization, Test 2: PushAndTop, Test 3: Pop."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test.sh": "Develop a script 'acceptance_tests/test.sh' for general acceptance testing of a graph operations program. The script should ensure correct functionality by focusing on the following key aspects:\n\n1.Processing different types of graph data, which are provided in standard input files located in the 'inputs' folder.\n2.Generating outputs that are to be saved in the 'test_outputs' folder.\n3.Comparing these outputs against expected results stored in the 'expected_outputs' folder.\n\nThe goal is to verify that the script can handle various graph formats and produce the expected output accurately."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test.sh": "Create a detailed acceptance testing script 'acceptance_tests/test.sh' for a graph processing application. The testing script should be structured to:\n\n1.Run the application with a variety of graph input files, which are located in the 'inputs' folder. This includes handling both simple and complex graph structures.\n2.Save the application's output for each input file in the 'test_outputs' folder.\n3.Compare the actual outputs with predefined expected results in the 'expected_outputs' folder to validate the accuracy of the graph processing.\n\nThe testing process is designed to rigorously assess the application's ability to process different types of graphs and to ensure that the outputs are consistent with expected results."
+    },
+    
+    
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

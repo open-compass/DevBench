@@ -1,0 +1,7 @@
+CREATE TABLE mentorship (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    student INTEGER NOT NULL,
+    mentor INTEGER NOT NULL,
+    FOREIGN KEY (student) REFERENCES people(ID),
+    FOREIGN KEY (mentor) REFERENCES people(ID)
+);

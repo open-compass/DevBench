@@ -1,0 +1,5 @@
+- c++ 17
+- tinyxml2 https://github.com/leethomason/tinyxml2
+- miniz https://github.com/leethomason/tinyxml2
+
+If your mingw version is < 9.0.0 (e.g. 8.1.0), you'd better not use lib <filesystem> in your code.

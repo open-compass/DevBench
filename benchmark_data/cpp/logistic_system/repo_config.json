@@ -1,0 +1,49 @@
+{
+    "PRD": "PRD.md",
+    "UML_class": "UML_class.md",
+    "UML_sequence": "UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "architecture_design.md",
+    "language": "cpp",
+
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "required_files":["data/*", "repo_config.json", "makefile_test", "expected_outputs", "inputs"],
+    "setup_shell_script": "setup_shell_script.sh",
+    "usage_examples": "examples",
+
+    "unit_test_linking": {
+        "unit_tests/test_account.cpp": ["include/account.h", "src/account.cpp"],    
+        "unit_tests/test_expressage.cpp": ["include/expressage.h", "src/expressage.cpp"],    
+        "unit_tests/test_logistics.cpp": ["include/logistics.h", "src/logistics.cpp"] 
+    },
+
+    "code_file_DAG": {
+        "include/logistics.h": ["include/expressage.h", "include/account.h"],
+        "src/logistics.cpp": ["include/logistics.h", "include/expressage.h", "include/account.h"],
+        "src/expressage.cpp": ["include/expressage.h"],
+        "src/account.cpp": ["include/account.h"],
+        "src/main.cpp": ["include/logistics.h"],
+        "makefile": ["src/logistics.cpp", "src/expressage.cpp", "src/account.cpp", "src/main.cpp", "include/logistics.h", "include/expressage.h", "include/account.h"]
+    },
+
+    "unit_test_script": "make test -f makefile_test; make coverage -f makefile_test",
+    "acceptance_test_script": "chmod +x acceptance_tests/test.sh;./acceptance_tests/test.sh",
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_account.cpp": "Verify the AccountNode class in test_account.cpp, focusing on the constructor and output operator overload functionalities.",
+        "unit_tests/test_expressage.cpp": "Assess the ExpressageNode class in test_expressage.cpp, including default and parameterized constructors, the Sign method, and output stream operator.",
+        "unit_tests/test_logistics.cpp": "Examine the LogisticSys class in test_logistics.cpp, covering methods like save, Regist, Login, queryInfo, changePassword, queryMoney, addMoney, assignExpressage, signExpressage, queryAllExpressage, and queryExpressage."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_account.cpp": "In test_account.cpp, perform detailed testing of AccountNode constructor correctness and output stream operator accuracy.",
+        "unit_tests/test_expressage.cpp": "Conduct in-depth testing of ExpressageNode in test_expressage.cpp, validating default and parameterized constructor behaviors, Sign method functionality, and output operator correctness.",
+        "unit_tests/test_logistics.cpp": "Execute comprehensive tests in test_logistics.cpp for LogisticSys, verifying save, Regist, Login, queryInfo, changePassword, queryMoney, addMoney, assignExpressage, signExpressage, queryAllExpressage, and queryExpressage methods."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test.sh": "Craft a script 'acceptance_tests/test.sh' for executing acceptance tests on the logistics system. The script should validate the overall functionality and integration of the system, with a focus on:\n\n1.Testing key functionalities using a series of standard input files located in the 'input' folder.\n2.Ensuring all system components integrate correctly and operate seamlessly.\n3.Comparing the system's output, stored in an 'outputs' folder, with expected results in the 'expected_outputs' folder.\n\nThe goal is to ascertain that the logistics system functions effectively and meets its integration and performance specifications."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test.sh": "Develop a detailed comprehensive acceptance testing script, 'acceptance_tests/test.sh', for the logistics system. This script should conduct detailed testing with specific objectives:\n\n1. Precise input/output validation using standard test cases found in the 'input' folder and verifying them against expected results in the 'expected_outputs' folder.\n2.Analysis of system behavior under various operational scenarios, including normal, edge, and stress cases.\n3.Thorough comparison of the actual outputs, stored in the 'outputs' folder, with expected results to ensure accuracy and reliability.\n\nThe aim is to thoroughly evaluate the system's ability to handle different operational demands and confirm its robustness in real-world applications."
+    }
+    
+  }

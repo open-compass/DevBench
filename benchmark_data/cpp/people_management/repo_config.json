@@ -1,0 +1,52 @@
+{
+    "language": "cpp",
+
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "docs/architecture_design.md",
+
+    "unit_tests": "tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "setup_shell_script": "setup_shell_script.sh",
+
+    "required_files": [
+        "sql/*", "makefile_test"
+    ],
+
+    "unit_test_linking": {
+        "tests/unit_testing.cpp": ["include/common.h", "include/people_management.h", "include/utils.h", "src/people_management.cpp", "src/utils.cpp"]
+    },
+
+    "code_file_DAG": {
+        "include/people_management.h": ["include/common.h", "include/utils.h"],
+        "include/utils.h": ["include/common.h"],
+        "src/main.cpp": ["include/people_management.h", "include/common.h"],
+        "src/people_management.cpp": ["include/people_management.h"],
+        "src/utils.cpp": ["include/utils.h"],
+        "makefile": ["src/main.cpp", "src/people_management.cpp", "src/utils.cpp"]
+    },
+
+    "unit_test_script": "make -f makefile_test; make coverage -f makefile_test",
+    "acceptance_test_script": "make; python acceptance_tests/acceptance_testing.py",
+
+
+    "coarse_unit_test_prompt": {
+        "tests/unit_testing.cpp": "Create unit tests in 'unit_testing.cpp' for the 'People Management' project. Focus on 'PeopleManagementTest' class with tests such as 'TEST_CONTAINS' to verify if a string is in a vector, 'TEST_VALIDATE_OPTIONS' to validate subcommand and target pairings, 'TEST_BUILD_OPTIONS' to construct command option maps, 'TEST_HANDLE_OPTIONS' for handling different command options, 'TEST_ADD' to add records, 'TEST_SEARCH' for record search, 'TEST_DELETE' for deletion, 'TEST_UPDATE' to update records, and 'TEST_MENTOR' for mentorship management. Utilize Google Test and mock SQLite database. Dependencies: <gtest/gtest.h>, <common.h>, <people_management.h>, <utils.h>. Only use dependencies mentioned in this prompt."
+    },
+    "fine_unit_test_prompt": {
+        "tests/unit_testing.cpp": "Write detailed unit tests in 'unit_testing.cpp' for 'People Management'. Include: Test1: 'TEST_CONTAINS' checks presence of a string in a vector. Test2: 'TEST_VALIDATE_OPTIONS' validates command option pairs. Test3: 'TEST_BUILD_OPTIONS' constructs command option maps. Test4: 'TEST_HANDLE_OPTIONS' handles command options. Test5: 'TEST_ADD' adds records to the database. Test6: 'TEST_SEARCH' searches database records. Test7: 'TEST_DELETE' deletes records. Test8: 'TEST_UPDATE' updates records. Test9: 'TEST_MENTOR' manages mentorship. Use Google Test and a mock SQLite database. Dependencies: <gtest/gtest.h>, <common.h>, <people_management.h>, <utils.h>. Only use dependencies mentioned in this prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/acceptance_testing.py": "Develop acceptance tests in 'acceptance_testing.py' for the 'People Management' system. Tests include 'test_add_school' to validate adding schools, 'test_add_person' for adding people, 'test_search_person' to find persons, 'test_search_school' for finding schools, 'test_update_person' to update person records, 'test_update_school' for school record updates, and 'test_mentor' to manage mentorships. Interact with the actual SQLite database and system's CLI using Python's 'sqlite3' and 'subprocess'. Only use dependencies mentioned in this prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/acceptance_testing.py": "Create detailed acceptance tests in 'acceptance_testing.py' for 'People Management'. Include: Test1: 'test_add_school' checks adding schools. Test2: 'test_add_person' verifies adding people. Test3: 'test_search_person' searches for persons. Test4: 'test_search_school' finds schools. Test5: 'test_update_person' updates person records. Test6: 'test_update_school' updates school records. Test7: 'test_mentor' manages mentorship relations. Use Python's 'sqlite3' and 'subprocess' for database and CLI interactions. Only use dependencies mentioned in this prompt."
+    },
+
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

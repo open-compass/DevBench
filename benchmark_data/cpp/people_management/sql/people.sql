@@ -1,0 +1,8 @@
+CREATE TABLE people (
+    ID INTEGER PRIMARY KEY AUTOINCREMENT,
+    name VARCHAR NOT NULL,
+    age INTEGER NOT NULL,
+    school INTEGER NOT NULL, 
+    type INTEGER CHECK( type IN (1, 2) ) NOT NULL,
+    FOREIGN KEY(school) REFERENCES school_table(schoolID)
+);

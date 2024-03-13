@@ -1,0 +1,44 @@
+# define the C++ compiler to use
+CC = g++
+
+# define any compile-time flags
+CFLAGS = -Wall -g -std=c++17 -fprofile-arcs -ftest-coverage
+
+# define any directories containing header files other than /usr/include
+INCLUDES = -I include/
+
+# define library paths in addition to /usr/lib
+LFLAGS = -L/usr/lib -lgcov --coverage
+
+# define any libraries to link into executable:
+LIBS = -lsqlite3 -lgtest -lgtest_main -lpthread
+
+# define the C++ source files
+SRCS = src/people_management.cpp src/utils.cpp tests/unit_testing.cpp
+
+# define the C++ object files 
+OBJS = $(SRCS:.cpp=.o)
+
+# defines the executable file 
+MAIN = test_main
+
+.PHONY: clean
+
+all:    $(MAIN)
+		@echo Program has been compiled
+
+$(MAIN): $(OBJS)
+		$(CC) $(CFLAGS) $(INCLUDES) -o $(MAIN) $(OBJS) $(LFLAGS) $(LIBS)
+
+.cpp.o:
+		$(CC) $(CFLAGS) $(INCLUDES) -c $< -o $@
+
+test:	$(MAIN)
+		./$(MAIN)
+
+coverage:	$(MAIN)
+		./$(MAIN)
+		gcov -r -b $(OBJS)
+
+clean:
+		$(RM) src/*.o *~ $(MAIN) test_main

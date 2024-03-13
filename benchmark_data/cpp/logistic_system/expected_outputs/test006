@@ -1,0 +1,36 @@
+Welcome!
+AccountId: admin_id
+UserName: AdminUser
+UserPhone: 1234567890
+Money: 100
+Address: AdminAddress
+UserType: admin
+Expressage id: KD00000001
+Sender: test_id_1
+Recipient: test_id_2
+Send Time: 2020-01-01
+Status: Unsigned
+Sign Time: NULL
+Remark: TestRemark
+Expressage id: KD00000002
+Sender: test_id_1
+Recipient: test_id_2
+Send Time: 2020-01-01
+Status: Signed
+Sign Time: 2020-01-02
+Remark: TestRemark
+Expressage id: KD00000002
+Sender: DIO
+Recipient: JoJo1
+Send Time: 1888-12-01
+Status: Unsigned
+Sign Time: NULL
+Remark: StoneGhostMask
+Expressage id: KD00000003
+Sender: JoJo1
+Recipient: DIO
+Send Time: 1889-02-07
+Status: Signed
+Sign Time: 1983-01-01
+Remark: MyBody
+Bye!

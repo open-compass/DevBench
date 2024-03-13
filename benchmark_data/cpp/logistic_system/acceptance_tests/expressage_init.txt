@@ -1,0 +1,3 @@
+2
+KD00000001 test_id_1 test_id_2 2020-01-01 NULL 0 TestRemark
+KD00000002 test_id_1 test_id_2 2020-01-01 2020-01-02 1 TestRemark

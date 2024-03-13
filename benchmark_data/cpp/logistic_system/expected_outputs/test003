@@ -1,0 +1,61 @@
+Welcome!
+AccountId: JoJo1
+UserName: JonathanJoestar
+UserPhone: 123456
+Money: 0
+Address: UK
+UserType: normal user
+Expressage id: KD00000002
+Sender: DIO
+Recipient: JoJo1
+Send Time: 1888-12-01
+Status: Unsigned
+Sign Time: NULL
+Remark: StoneGhostMask
+Failed.
+Expressage id: KD00000002
+Sender: DIO
+Recipient: JoJo1
+Send Time: 1888-12-01
+Status: Unsigned
+Sign Time: NULL
+Remark: StoneGhostMask
+Failed.
+Rest money: 100
+Succeed.
+Expressage id: KD00000002
+Sender: DIO
+Recipient: JoJo1
+Send Time: 1888-12-01
+Status: Unsigned
+Sign Time: NULL
+Remark: StoneGhostMask
+Expressage id: KD00000003
+Sender: JoJo1
+Recipient: DIO
+Send Time: 1889-02-07
+Status: Unsigned
+Sign Time: NULL
+Remark: MyBody
+Expressage id: KD00000003
+Sender: JoJo1
+Recipient: DIO
+Send Time: 1889-02-07
+Status: Unsigned
+Sign Time: NULL
+Remark: MyBody
+Expressage id: KD00000002
+Sender: DIO
+Recipient: JoJo1
+Send Time: 1888-12-01
+Status: Unsigned
+Sign Time: NULL
+Remark: StoneGhostMask
+Expressage id: KD00000002
+Sender: DIO
+Recipient: JoJo1
+Send Time: 1888-12-01
+Status: Unsigned
+Sign Time: NULL
+Remark: StoneGhostMask
+Bye!

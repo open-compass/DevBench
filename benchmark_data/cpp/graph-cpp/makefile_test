@@ -1,0 +1,46 @@
+
+CXX = g++
+CXXFLAGS = -std=c++17 -Wall -g -fprofile-arcs -ftest-coverage
+
+GTEST_DIR = /home/a111/Documents/googletest
+GTEST_LIB_DIR = $(GTEST_DIR)/build/lib
+GTEST_FLAGS = -isystem $(GTEST_DIR)/googletest/include
+GTEST_LIBS = -L$(GTEST_LIB_DIR) -lgtest -lgtest_main
+
+SRC_DIR = src
+OBJ_DIR = obj
+SRCS = $(wildcard $(SRC_DIR)/*.cpp)
+OBJS = $(patsubst $(SRC_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(SRCS))
+
+TEST_DIR = unit_tests
+TEST_SRCS = $(wildcard $(TEST_DIR)/*.cpp)
+TEST_OBJS = $(patsubst $(TEST_DIR)/%.cpp, $(OBJ_DIR)/%.o, $(TEST_SRCS))
+
+TARGET = graph
+TEST_TARGET = run_tests
+
+all: $(TARGET)
+
+$(TARGET): $(OBJS)
+	$(CXX) $(CXXFLAGS) -o $@ $^
+
+$(OBJ_DIR)/%.o: $(SRC_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) -c -o $@ $<
+
+$(OBJ_DIR)/%.o: $(TEST_DIR)/%.cpp | $(OBJ_DIR)
+	$(CXX) $(CXXFLAGS) $(GTEST_FLAGS) -c -o $@ $<
+
+$(OBJ_DIR):
+	mkdir -p $@
+
+test: $(TEST_OBJS) $(filter-out $(OBJ_DIR)/main.o, $(OBJS))
+	$(CXX) $(CXXFLAGS) $(GTEST_FLAGS) -o $(TEST_TARGET) $^ $(GTEST_LIBS) -lpthread
+	./$(TEST_TARGET)
+
+coverage: test
+	gcov -r -b $(SRCS) $(OBJS)
+
+clean:
+	rm -rf $(OBJ_DIR) $(TARGET) $(TEST_TARGET) *.gcda *.gcno *.gcov ./src/main.o
+
+.PHONY: all test clean coverage

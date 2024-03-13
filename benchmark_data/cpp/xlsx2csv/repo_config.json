@@ -1,0 +1,56 @@
+{
+    "PRD": "PRD.md",
+    "UML_class": "UML_class.md",
+    "UML_sequence": "UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "architecture_design.md",
+    "language": "cpp",
+    
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "required_files":["include/miniz.h", "include/tinyxml2.h", "inputs/*", "src/miniz.c", "src/tinyxml2.cpp", "makefile_test"],
+    "setup_shell_script": "setup_shell_script.sh",
+    "usage_examples": "examples",
+
+    "unit_test_linking": {
+        "unit_tests/test_archive.cpp": ["include/archive.h", "src/archive.cpp"],    
+        "unit_tests/test_utils.cpp": ["include/utils.h", "src/utils.cpp"],    
+        "unit_tests/test_workbook.cpp": ["include/worksheet.h", "src/worksheet.cpp", "include/workbook.h", "src/workbook.cpp"] 
+    },
+    
+    "code_file_DAG": {
+        "include/utils.h": ["include/types.h"],
+        "src/utils.cpp": ["include/utils.h"],
+        "include/archive.h": ["include/utils.h", "include/types.h"],
+        "src/archive.cpp": ["include/archive.h"],
+        "include/worksheet.h": ["include/types.h"],
+        "include/workbook.h": ["include/worksheet.h", "include/types.h", "include/utils.h", "include/archive.h"],
+        "src/worksheet.cpp": ["include/workbook.h"],
+        "src/workbook.cpp": ["include/workbook.h", "include/archive.h", "include/utils.h"],
+        "src/main.cpp": ["include/workbook.h"],
+        "makefile": ["include/workbook.h", "include/archive.h", "include/utils.h", "include/worksheet.h", "include/types.h", "src/main.cpp", "src/workbook.cpp", "src/archive.cpp", "src/utils.cpp", "src/worksheet.cpp"]
+    },
+    
+    "unit_test_script": "make test -f makefile_test; make coverage -f makefile_test",
+    "acceptance_test_script": "chmod +x acceptance_tests/test.sh;./acceptance_tests/test.sh",
+    
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_archive.cpp": "Develop unit tests in 'unit_tests/test_archive.cpp' for 'archive' class. Test functionalities such as reading sheet relations, accessing sheet XML, and retrieving shared strings from an XLSX file. Dependencies: gtest, iostream, memory. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_utils.cpp": "Create unit tests in 'unit_tests/test_utils.cpp' for utility functions. Ensure the accurate conversion of strings to indexes, row-column extraction, and effective string stripping. Dependencies: gtest. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_workbook.cpp": "Formulate unit tests in 'unit_tests/test_workbook.cpp' for 'workbook' class. Verify the retrieval of shared strings and correctness of CSV output against expected data. Dependencies: gtest, fstream, unistd, string, iostream. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_archive.cpp": "In 'unit_tests/test_archive.cpp', write detailed unit tests for 'archive' class: Test1: 'GetSheetRelations' checks sheet relations retrieval. Test2: 'GetSheetXML' for XML access. Test3: 'GetSharedStrings' ensures correct shared strings extraction. Dependencies: gtest, iostream, memory. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_utils.cpp": "In 'unit_tests/test_utils.cpp', draft detailed unit tests for utility functions: Test1: 'StringToIdx' validates index conversion. Test2: 'StringToRowColumn' for row-column extraction. Test3: 'Strip' tests string trimming. Dependencies: gtest. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_workbook.cpp": "In 'unit_tests/test_workbook.cpp', create detailed unit tests for 'workbook' class: Test1: 'GetSharedString' for shared string retrieval. Test2: 'WriteToCSV' checks CSV file generation and comparison. Dependencies: gtest, fstream, unistd, string, iostream. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test.sh": "Create an acceptance test script named 'acceptance_tests/test.sh' for the 'xlsx2csv' tool. This script should:\n\nValidate the tool's ability to convert XLSX files to CSV format.\n1.Test error handling for incorrect usage and invalid inputs.\n2.Ensure accurate CSV conversion, comparing outputs with expected results.\n3.Include steps for:\n\tBuilding the project.\n\tRunning the tool with standard input files located in './inputs'.\n\tStoring results in a dedicated output directory './outputs'.\n\tComparing these results with expected outputs in './expected_outputs'.\n\nThe goal is to comprehensively assess the tool's functionality and reliability in different scenarios."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test.sh": "Develop a detailed acceptance testing script, 'acceptance_tests/test.sh', for 'xlsx2csv'. The script should perform the following tests:\n\nTest1 - Assess the tool's handling of incorrect usage, using specific cases to check for correct error messages.\nTest2 - Test with invalid input files from './inputs', ensuring robust error handling.\nTest3 - Confirm the accuracy of CSV conversion, comparing the tool's output in './outputs' with expected results in './expected_outputs' for various test cases.\n\nInclude steps for project compilation, input validation, and output comparison. The script aims to provide a thorough evaluation of the tool's performance, emphasizing its ability to handle real-world usage scenarios accurately and efficiently."
+    },
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}
