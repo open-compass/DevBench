@@ -1,0 +1,45 @@
+{
+    "PRD": "PRD.md",
+    "UML_class": "UML_class.md",
+    "UML_sequence": "UML_sequence.md",
+    "dependencies": "requirements.txt",
+    "architecture_design": "architecture_design.md",
+    "language": "python",
+
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "setup_shell_script": "setup_shell_script.sh",
+    "required_files":["requirements.txt", "test_downloads"],
+    "unit_test_linking": {
+        "unit_tests/test_downloader.py": ["chakin/downloader.py"]
+    },
+
+    "code_file_DAG": {
+        "chakin/downloader.py": []
+    },
+
+    "unit_test_fine_scripts": {
+        "unit_tests/test_downloader.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_downloader.py"
+    },
+
+    "unit_test_script": "pytest --cov=chakin --cov-report=term-missing --json-report --json-report-file=unit_test_report.json unit_tests",
+    "acceptance_test_script": "python -m unittest acceptance_tests/acceptance_test.py",
+
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_downloader.py": "Develop unit tests in 'unit_tests/test_downloader.py' for the downloader module of 'chakin'. Test the functionality of 'load_datasets()' and 'download()' methods, ensuring correct data retrieval and file handling. Dependencies: os, unittest, pandas. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_downloader.py": "In 'unit_tests/test_downloader.py', create detailed unit tests for 'chakin' downloader: Test1: 'test_load_datasets' checks DataFrame return. Test2: 'test_download_default' validates dataset download by number. Test3: 'test_download_by_name' for downloading by name. Test4: 'test_download_dir' ensures correct directory saving. Test5: 'test_download_nest_dir' for nested directory download. Dependencies: os, unittest, pandas. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/acceptance_test.py": "Perform acceptance testing in 'acceptance_tests/acceptance_test.py' for the 'chakin' project. Test the 'download' function using a mocked 'urlretrieve' to simulate file download and verify file existence. Dependencies: os, sys, unittest, patch, pandas. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/acceptance_test.py": " In 'acceptance_tests/acceptance_test.py', execute a detailed acceptance test: Test Download Acceptance. Objective: Ensure the download function works correctly in a real-world scenario. Method: Mock urlretrieve to simulate file download. Invoke the download function with a dummy file number and save directory. Check if the file has been successfully downloaded. Expected Result: A file is created in the specified directory. The test should verify the existence of the file and then perform cleanup by deleting the file and directory."
+    },
+
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

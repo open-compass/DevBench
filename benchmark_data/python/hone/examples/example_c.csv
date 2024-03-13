@@ -1,0 +1,4 @@
+name,birth day,birth month,birth year,reference,reference name
+Bob,7,May,1985,TRUE,Smith
+Julia,21,January,1997,FALSE,N/A
+Rick,12,June,1996,TRUE,Clara

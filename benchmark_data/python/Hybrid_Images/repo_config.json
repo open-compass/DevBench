@@ -1,0 +1,44 @@
+{
+    "language": "python",
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "docs/requirements.txt",
+    "architecture_design": "docs/architecture_design.md",
+    
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "setup_shell_script": "setup_shell_script.sh",
+
+    "unit_test_linking": {
+        "unit_tests/unit_test.py": ["src/hybrid.py"]
+    },
+    "required_files":["resources", "docs/requirements.txt"],
+    "code_file_DAG": {
+        "src/hybrid.py": []
+    },
+
+    "unit_test_fine_scripts": {
+        "unit_tests/unit_test.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/unit_test.py"
+    },
+    
+    "unit_test_script": "pytest --cov=. --cov-report=json:unit_test_cov.json --json-report --json-report-file=unit_test_report.json unit_tests",
+    "acceptance_test_script": "pytest --cov=. --cov-report=json:acceptance_test_cov.json --json-report --json-report-file=acceptance_test_report.json acceptance_tests",
+    
+    "coarse_unit_test_prompt": {
+        "unit_tests/unit_test.py": "File: unit_test.py. Purpose: Evaluate image processing functions cross_correlation_2d, convolve_2d, gaussian_blur_kernel_2d in 'TestCrossCorrelation2D', 'TestConvolve2D', 'TestGaussianKernel2D'. Focus on handling various image types and filter sizes. Dependencies and Modules: unittest, numpy, cv2, hybrid module. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/unit_test.py": "File: unit_tests/unit_test.py. Purpose: Detailed analysis of subtests in 'TestCrossCorrelation2D', 'TestConvolve2D', 'TestGaussianKernel2D'. Examine cross_correlation_2d for identity and mean filter on grey and RGB images, and filters larger than image. Assess convolve_2d for identity and mean filter on grey and RGB images, and filters larger than image. Evaluate gaussian_blur_kernel_2d for generating Gaussian blur kernels with different sizes and sigmas. Dependencies and Modules: unittest, numpy, cv2, hybrid module. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/acceptance_test.py": "File: acceptance_test. Purpose: Evaluate the integration of the create_hybrid_image function in 'TestHybridImage' class for combining images into a hybrid image. Focus on parameter handling and image reading. Dependencies and Modules: unittest, sys, cv2, numpy, hybrid module. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/acceptance_test.py": "File: acceptance_tests/acceptance_tests.py. Purpose: In-depth scrutiny of the 'TestHybridImage' class. Analyze the create_hybrid_image function, focusing on blending images using low and high pass filters, varying filter sizes and types (low pass with Gaussian, high pass with subtracting low pass from original), and parameter handling for cutoff frequencies. Evaluate against a reference hybrid image for accuracy. Dependencies and Modules: unittest, sys, cv2, numpy, hybrid module. Should only use dependencies and modules mentioned in the prompt."
+    },    
+    
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

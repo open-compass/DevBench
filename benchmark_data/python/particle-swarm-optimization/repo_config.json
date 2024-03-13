@@ -1,0 +1,51 @@
+{
+    "language": "python",
+
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "docs/requirements.txt",
+    "architecture_design": "docs/architecture_design.md",
+    
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "required_files": ["docs/requirements.txt"],
+    "setup_shell_script": "setup_shell_script.sh",
+
+    "unit_test_linking": {
+        "unit_tests/test_cost_functions.py": ["pso/cost_functions.py"],    
+        "unit_tests/test_pso_simple.py": ["pso/pso_simple.py"]    
+    },
+    
+    "code_file_DAG": {
+        "pso/pso_simple.py": [],
+        "pso/cost_functions.py": []
+    },
+
+    "unit_test_fine_scripts": {
+        "unit_tests/test_cost_functions.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_cost_functions.py",    
+        "unit_tests/test_pso_simple.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_pso_simple.py"
+    },
+    
+    "unit_test_script": "pytest --cov=. --cov-report=json:unit_test_cov.json --json-report --json-report-file=unit_test_report.json unit_tests",
+    "acceptance_test_script": "pytest --cov=. --cov-report=json:acceptance_test_cov.json --json-report --json-report-file=acceptance_test_report.json acceptance_tests",
+
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_cost_functions.py": "File: test_cost_functions.py. Purpose: Test the 'sphere' function from 'pso.cost_functions' for correctness with various inputs. Dependencies and Modules: 'unittest', 'pso.cost_functions' from 'pso' package. Should only use dependencies and modules mentioned in the prompt.",
+        "unit_tests/test_pso_simple.py": "File: test_pso_simple.py. Purpose: Evaluate functionalities of 'pso_simple', including particle evaluation and optimization functions. Dependencies and Modules: 'unittest', 'pso_simple', 'pso.cost_functions' from 'pso' package. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_cost_functions.py": "File: test_cost_functions.py. Purpose: Conduct detailed tests on 'sphere' function in 'pso.cost_functions'. Subtests: 1) Test with positive inputs - Ensure correct calculation for positive values, 2) Test with zero inputs - Verify output is zero, 3) Test with negative inputs - Confirm accurate computation for negative values. Dependencies and Modules: 'unittest', 'pso.cost_functions' from 'pso' package. Should only use dependencies and modules mentioned in the prompt.",
+        "unit_tests/test_pso_simple.py": "File: test_pso_simple.py. Purpose: Detailed testing of 'pso_simple' module functionalities. Subtests: 1) 'evaluate' method in 'Particle' class - Check correct update of particle's best position and error, 2) 'minimize' function - Assess optimization efficiency of PSO algorithm using 'sphere' function, 3) 'update_velocity' method - Ensure accurate velocity update based on global and personal best positions, 4) 'update_position' method - Validate correct position update considering new velocity and defined bounds. Dependencies and Modules: 'unittest', 'pso_simple', 'pso.cost_functions' from 'pso' package. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test_pso.py": "File: test_pso.py. Purpose: Perform acceptance testing for the PSO algorithm's optimization effectiveness using the 'sphere' function. Dependencies and Modules: 'unittest', 'pso_simple', 'pso.cost_functions' from 'pso' package. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test_pso.py": "File: test_pso.py. Purpose: Detailed acceptance testing of 'minimize' function in 'pso_simple' using 'sphere' function to evaluate optimization efficiency. Subtests: Assess the ability of 'minimize' to find a more optimal solution than the initial state using the PSO algorithm. Dependencies and Modules: 'unittest', 'pso_simple', 'pso.cost_functions' from 'pso' package. Should only use dependencies and modules mentioned in the prompt."
+    },
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

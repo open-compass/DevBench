@@ -1,0 +1,54 @@
+[
+    {
+        "some 'quoted\"' field\"": "no quotes",
+        "adopted_since": "2012",
+        "adopted": "TRUE",
+        "birth": {
+            "year": "2011",
+            "month": "April",
+            "day": "11"
+        },
+        "weight (kg)": "3.6",
+        "age (years)": "5",
+        "name": "Tommy"
+    },
+    {
+        "some 'quoted\"' field\"": "one double \" and one single ' quote",
+        "adopted_since": "N/A",
+        "adopted": "FALSE",
+        "birth": {
+            "year": "2015",
+            "month": "May",
+            "day": "6"
+        },
+        "weight (kg)": "8.2",
+        "age (years)": "2",
+        "name": "Clara"
+    },
+    {
+        "some 'quoted\"' field\"": "two \"double\" and two 'single' quotes",
+        "adopted_since": "2017",
+        "adopted": "TRUE",
+        "birth": {
+            "year": "2011",
+            "month": "August",
+            "day": "21"
+        },
+        "weight (kg)": "3.3",
+        "age (years)": "6",
+        "name": "Catnip"
+    },
+    {
+        "some 'quoted\"' field\"": "no quotes",
+        "adopted_since": "2018",
+        "adopted": "TRUE",
+        "birth": {
+            "year": "2015",
+            "month": "January",
+            "day": "18"
+        },
+        "weight (kg)": "3.1",
+        "age (years)": "3",
+        "name": "Ciel"
+    }
+]

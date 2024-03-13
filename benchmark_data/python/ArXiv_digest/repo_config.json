@@ -1,0 +1,63 @@
+{
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "docs/requirements.txt",
+    "architecture_design": "docs/architecture_design.md",
+    "language": "python",
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "required_files":["docs/requirements.txt"],
+    "setup_shell_script": "setup_shell_script.sh",
+    "unit_test_linking": {
+        "unit_tests/test_check_date.py": ["query_arxiv.py"],    
+        "unit_tests/test_construct_query_url.py": ["query_arxiv.py"],    
+        "unit_tests/test_print_results.py": ["query_arxiv.py"],    
+        "unit_tests/test_process_entries.py": ["query_arxiv.py"],    
+        "unit_tests/test_save_to_csv.py": ["query_arxiv.py"],
+        "unit_tests/test_get_args.py": ["query_arxiv.py"]
+    },
+    
+    "code_file_DAG": {
+        "query_arxiv.py": []
+    },
+
+    "unit_test_fine_scripts": {
+        "unit_tests/test_check_date.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_check_date.py",    
+        "unit_tests/test_construct_query_url.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_construct_query_url.py",    
+        "unit_tests/test_get_args.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_get_args.py",
+        "unit_tests/test_print_results.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_print_results.py",    
+        "unit_tests/test_process_entries.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_process_entries.py",   
+        "unit_tests/test_save_to_csv.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_save_to_csv.py"
+    },
+    
+    "unit_test_script": "pytest --cov=. --cov-report=json:unit_test_cov.json --json-report --json-report-file=unit_test_report.json unit_tests",
+    "acceptance_test_script": "pytest --cov=. --cov-report=json:acceptance_test_cov.json --json-report --json-report-file=acceptance_test_report.json acceptance_tests",
+    
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_check_date.py": "Write unit tests in 'unit_tests/test_check_date.py' for 'check_date' function, directly interacting with the API without mocks. Test for date range accuracy, out-of-range dates, and ValueError for invalid formats. Dependencies: unittest, datetime. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_construct_query_url.py": "Develop unit tests in 'unit_tests/test_construct_query_url.py' for 'construct_query_url' function, directly using the API without mocks. Validate URL formation for various query parameters, and special or non-ASCII characters handling. Dependencies: pytest. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_get_args.py": "Create unit tests in 'unit_tests/test_get_args.py' for 'get_args' function, directly accessing the API without mocks. Test missing required arguments, correct argument parsing, defaults, and overrides. Dependencies: unittest. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_print_results.py": "Formulate unit tests in 'unit_tests/test_print_results.py' for 'print_results' function, directly using the API without mocks. Check output formatting for multiple papers and abstract truncation. Dependencies: capfd from pytest. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_process_entries.py": "Construct unit tests in 'unit_tests/test_process_entries.py' for 'process_entries' function, directly interacting with the API without mocks. Verify processing of XML entries with different authors and date filtering. Dependencies: xml.etree.ElementTree, datetime. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_save_to_csv.py": "Develop unit tests in 'unit_tests/test_save_to_csv.py' for 'save_to_csv' function, directly accessing the API without mocks. Test scenarios like no papers to save, directory creation, file writing, and content verification. Dependencies: os, csv, capfd from pytest, tmpdir from pytest. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_check_date.py": "In 'unit_tests/test_check_date.py', create detailed unit tests for 'check_date': Test1: 'test_within_range' checks date range accuracy. Test2: 'test_out_of_range' for out-of-range dates. Test3: 'test_invalid_date_format' for format errors. Dependencies: unittest, datetime. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_construct_query_url.py": "In 'unit_tests/test_construct_query_url.py', write detailed unit tests for 'construct_query_url': Test1: 'test_query_url_header' checks URL header. Test2: 'test_query_url_sort_by_submitted_date_descending' for sort order. Additional tests for various query parameters. Dependencies: pytest. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_get_args.py": "In 'unit_tests/test_get_args.py', formulate detailed unit tests for 'get_args': Test1: 'test_missing_required_arguments' checks for missing arguments. Test2: 'test_all_required_arguments_present' for argument presence. Additional tests for argument parsing. Dependencies: unittest. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_print_results.py": "In 'unit_tests/test_print_results.py', draft detailed unit tests for 'print_results': Test1: 'test_print_with_multiple_papers' for multiple paper outputs. Test2: 'test_abstract_truncation' for abstract truncation. Dependencies: capfd from pytest. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_process_entries.py": "In 'unit_tests/test_process_entries.py', prepare detailed unit tests for 'process_entries': Test1: 'test_process_entries_one_author' for single author entries. Test2: 'test_process_entries_multiple_authors' for multiple authors. Additional tests for date filtering. Dependencies: xml.etree.ElementTree, datetime. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_save_to_csv.py": "In 'unit_tests/test_save_to_csv.py', create detailed unit tests for 'save_to_csv': Test1: 'test_no_papers_to_save' checks empty paper list handling. Test2: 'test_directory_created' for directory creation. Additional tests for file writing and content. Dependencies: os, csv, capfd from pytest, tmpdir from pytest. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test_query_arxiv.py": "Construct an acceptance test in 'acceptance_tests/test_query_arxiv.py' for the 'ArXiv digest' project, directly using the API without mocks. Perform searches by category, title, author, and abstract. Compare outputs with reference data, and validate CSV file outputs. Dependencies: pandas, os, re, unittest, shutil. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test_query_arxiv.py": "Develop a detailed acceptance test in 'acceptance_tests/test_query_arxiv.py' for 'ArXiv digest', directly interacting with the API without mocks. Test category, title, author, and abstract searches. Ensure terminal and CSV outputs match reference data. Dependencies: pandas, os, re, unittest, shutil. Should only use dependencies and modules mentioned in this prompt."
+    },
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

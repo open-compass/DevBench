@@ -1,0 +1,12 @@
+{
+  "adopted_since": "adopted_since",
+  "adopted": "adopted",
+  "birth": {
+    "year": "birth year",
+    "month": "birth month",
+    "day": "birth day"
+  },
+  "weight (kg)": "weight (kg)",
+  "age (years)": "age (years)",
+  "name": "name"
+}

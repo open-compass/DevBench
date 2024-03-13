@@ -1,0 +1,54 @@
+{
+    "language": "python",
+
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "docs/requirements.txt",
+    "architecture_design": "docs/architecture_design.md",
+    
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "required_files":["samples", "docs/requirements.txt"],
+    "setup_shell_script": "setup_shell_script.sh",
+
+    "unit_test_linking": {
+        "unit_tests/test_check_data.py": ["readtime/result.py", "readtime/api.py", "readtime/utils.py"],
+        "unit_tests/test_custom_wpm.py": ["readtime/result.py", "readtime/api.py", "readtime/utils.py"],
+        "unit_tests/test_transitions.py": ["readtime/result.py", "readtime/api.py", "readtime/utils.py"]
+    },
+    
+    "code_file_DAG": {
+        "readtime/result.py": ["readtime/api.py", "readtime/utils.py"]
+    },
+
+    "unit_test_fine_scripts": {
+        "unit_tests/test_check_data.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_check_data.py",
+        "unit_tests/test_custom_wpm.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_custom_wpm.py",
+        "unit_tests/test_transitions.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_transitions.py"
+    },
+    
+    "unit_test_script": "pytest --cov=. --cov-report=json:unit_test_cov.json --json-report --json-report-file=unit_test_report.json unit_tests",
+    "acceptance_test_script": "pytest --cov=. --cov-report=json:acceptance_test_cov.json --json-report --json-report-file=acceptance_test_report.json acceptance_tests",
+
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_check_data.py": "File: test_check_data.py. Purpose: Analyze data handling in readtime functions. Tests: 'test_plain_text_empty', 'test_plain_text_null', 'test_unsupported_format', 'test_invalid_format'. Dependencies and Modules: readtime, readtime.utils,lxml,markdown2,pyquery. Should only use dependencies and modules mentioned in the prompt.",
+        "unit_tests/test_custom_wpm.py": "File: test_custom_wpm.py. Purpose: Validate the custom WPM feature in readtime. Test: 'test_custom_wpm'. Dependencies and Modules: readtime, readtime.utils, DEFAULT_WPM,lxml,markdown2,pyquery. Should only use dependencies and modules mentioned in the prompt.",
+        "unit_tests/test_transitions.py": "File: test_transitions.py. Purpose: Test minute transitions in read time calculations. Test: 'test_transitions'. Dependencies and Modules: readtime, readtime.utils,lxml,markdown2,pyquery. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_check_data.py": "File: test_check_data.py. Purpose: Detailed analysis of data input handling. Subtests: 'test_plain_text_empty' - empty string input, 'test_plain_text_null' - null input, 'test_unsupported_format' and 'test_invalid_format' - error handling. Dependencies and Modules: readtime, readtime.utils,lxml,markdown2,pyquery. Should only use dependencies and modules mentioned in the prompt.",
+        "unit_tests/test_custom_wpm.py": "File: test_custom_wpm.py. Purpose: In-depth analysis of custom WPM functionality. Subtest: 'test_custom_wpm' assesses accuracy with custom/default WPM in readtime.of_text. Dependencies and Modules: readtime, readtime.utils, DEFAULT_WPM,lxml,markdown2,pyquery. Should only use dependencies and modules mentioned in the prompt.",
+        "unit_tests/test_transitions.py": "File: test_transitions.py. Purpose: Comprehensive analysis of read time calculations at minute boundaries. Subtest: 'test_transitions' for each minute transition. Dependencies and Modules: readtime, readtime.utils,lxml,markdown2,pyquery. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test_readtime.py": "File: test_readtime.py. Purpose: Assess read time calculations for different formats and adding read times. Tests: 'test_plain_text', 'test_markdown', 'test_html', 'test_can_add'. Dependencies and Modules: readtime, readtime.utils, os,lxml,markdown2,pyquery. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test_readtime.py": "File: test_readtime.py. Purpose: Detailed examination of read time calculations for various formats and their addition. Subtests: 'test_plain_text' - plain text, 'test_markdown' - markdown, 'test_html' - HTML, 'test_can_add' - addition of read times. Dependencies and Modules: readtime, readtime.utils, os,lxml,markdown2,pyquery. Should only use dependencies and modules mentioned in the prompt."
+    },
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

@@ -1,0 +1,45 @@
+{
+    "language": "python",
+
+    "PRD": "PRD.md",
+    "UML_class": "UML_class.md",
+    "UML_sequence": "UML_sequence.md",
+    "dependencies": "requirements.txt",
+    "architecture_design": "architecture_design.md",
+    
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "required_files": ["requirements.txt"],
+    "setup_shell_script": "setup_shell_script.sh",
+    "unit_test_linking": {
+        "unit_tests/test_geotext.py": ["geotext/geotext.py"]    
+    },
+    
+    "code_file_DAG": {
+        "geotext/geotext.py": []
+    },
+
+    "unit_test_fine_scripts": {
+        "unit_tests/test_geotext.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_geotext.py"    
+    },
+    
+    "unit_test_script": "pytest --cov=geotext --cov-report=json:unit_test_cov.json --json-report --json-report-file=unit_test_report.json unit_tests",
+    "acceptance_test_script": "pytest --cov=geotext --cov-report=json:acceptance_test_cov.json --json-report --json-report-file=acceptance_test_report.json acceptance_tests",
+
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_geotext.py": "File: test_geotext.py. Purpose: Test the GeoText class from the 'geotext' module for correct extraction of cities, countries, and nationalities from text. Dependencies and Modules: 'unittest', 'geotext' from 'geotext' package. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_geotext.py": "File: test_geotext.py. Purpose: Detailed testing of GeoText class functionalities. Subtests: 1) Test cities extraction with various inputs, 2) Test country mentions count, 3) Test nationalities extraction, 4) Test filtering by country code. Dependencies and Modules: 'unittest', 'geotext' from 'geotext' package. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test_acceptance.py": "File: test_acceptance.py. Purpose: Perform acceptance testing for the GeoText library's functionality to ensure it meets the acceptance criteria. Dependencies and Modules: 'unittest', 'geotext' from 'geotext' package. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test_acceptance.py": "File: test_acceptance.py. Purpose: Detailed acceptance testing of GeoText library. Subtests: Evaluate the accuracy and completeness of city, country, and nationality extraction from various text inputs. Dependencies and Modules: 'unittest', 'geotext' from 'geotext' package. Should only use dependencies and modules mentioned in the prompt."
+    },
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

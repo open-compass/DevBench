@@ -1,0 +1,39 @@
+{
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "docs/architecture_design.md",
+    "language": "python",
+
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "required_files": ["data_file"],
+    "setup_shell_script": "",
+    "unit_test_linking": {
+        "unit_tests/test_hone.py": ["hone.py"],
+        "unit_tests/test_csv_utils.py":["hone.py"]
+    },
+    "code_file_DAG": {
+        "hone/__init__.py": ["hone/hone.py", "hone/utils/csv_utils.py", "hone/utils/json_utils.py"]
+    },
+    "unit_test_script": "pytest --cov=hone --cov-report=term-missing --json-report --json-report-file=unit_test_report.json test",
+    "acceptance_test_script": "python -m unittest test_acceptance.py",
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_csv_utils.py": "Develop unit tests in 'unit_tests/test_csv_utils.py' for the CSV utility functions of 'hone'. Ensure correct CSV reading and data handling. Dependencies: os, unittest.",
+        "unit_tests/test_hone.py": "Develop unit tests in 'unit_tests/test_hone.py' for the Hone class. Test the conversion functionality ensuring correct nested JSON creation. Dependencies: os, unittest."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_csv_utils.py": "Develop unit tests in 'unit_tests/test_csv_utils.py' for the CSV utility functions of 'hone'. Ensure correct CSV reading and data handling. Dependencies: os, unittest.",
+        "unit_tests/test_hone.py": "In 'unit_tests/test_hone.py', conduct detailed unit tests.The path to the example csv and json files for this repo is examples/example_a.csv and examples/example_a.json. Test 1: Function: test_nest_small_csv. Objective: Validate the correct nesting of a small CSV dataset into JSON format. Method: Use Hone to convert csv_A_path to JSON. Compare the result with the expected JSON structure from json_A_path. Expected Result: The JSON output should match the expected result from json_A_path. Test 2: Function: test_get_schema. Objective: Ensure that the correct schema is generated from the CSV file and used for conversion. Method: Generate a schema from csv_A_path. Validate this schema against the expected schema from json_schema_A_path. Use the generated schema to convert csv_A_path to JSON and compare with the expected JSON. Expected Result: The generated schema should match the expected schema. The JSON output using this schema should be equivalent to the expected JSON result. Test 3: Function: test_nest_comma_csv. Objective: Test the accurate conversion of CSV data with complex comma usage into JSON. Method: Convert csv_B_path to JSON. Compare the conversion result with the expected JSON output from json_B_path. Expected Result: The JSON conversion should correctly handle complex comma usage and match the expected result. Test 4: Function: test_nest_quotes_csv. Objective: Assess the conversion of CSV data with complex quoting into JSON. Method: Convert csv_C_path to JSON. Compare this conversion with the expected JSON output from json_C_path. Expected Result: The JSON conversion should accurately handle complex quoting and align with the expected JSON structure."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test_acceptance.py": "Perform acceptance testing in 'test_acceptance.py' for the 'hone' project. Test the conversion from CSV to JSON and ensure data integrity and correct error handling. Dependencies: unittest."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test_acceptance.py": "In 'acceptance_tests/test_acceptance.py', conduct detailed acceptance tests.The path to the example csv and json files for this repo is examples/example_a.csv and examples/example_a.json. Class: AcceptanceTestCSVtoJSON. Test 1: Function: test_full_conversion_small_cats_dataset. Objective: Ensure accurate conversion of the small cats dataset with a provided schema to JSON format. Method: Compare the output of Hone's convert method with the expected JSON result. Expected Result: The conversion should match the expected JSON output exactly. Test 2: Function: test_full_conversion_comma_test. Objective: Test the conversion for datasets with complex comma usage. Method: Validate that the Hone conversion output aligns with the expected JSON for the comma test dataset. Expected Result: Accurate conversion handling of complex comma usage. Test 3: Objective: Assess conversion accuracy for datasets with complex quoting. Method: Ensure the Hone conversion output matches the expected JSON for the quotes test dataset. Expected Result: Proper handling and conversion of datasets with complex quoting."
+    },
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

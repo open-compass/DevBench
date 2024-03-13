@@ -1,0 +1,141 @@
+<p>Want to add a feature or automate something in your <a href="https://netbeans.org/">NetBeans IDE</a>? Follow along as we write your first plugin for NetBeans.</p>
+
+<p>Let's go beyond the simple <a href="https://platform.netbeans.org/tutorials/nbm-google.html">Toolbar Example</a> and create a plugin which can auto-update itself.
+This code is based on the <a href="https://github.com/wakatime/netbeans-wakatime">WakaTime plugin for NetBeans</a>. Our example plugin will simply print a Hello World statement and update to new versions if available... just enough to get you started.</p>
+
+<h2>Create a new Plugin Project</h2>
+
+<p>Choose <code>File</code> -> <code>New Project</code> then <code>NetBeans Modules</code> -> <code>Module</code> as the project type.</p>
+
+<p><img src="https://wakatime.com/static/img/blog/create-plugin-project.png" alt="Create Plugin Project" /></p>
+
+<p>Name your project</p>
+
+<p><img src="https://wakatime.com/static/img/blog/name-your-project.png" alt="Name Your Project" /></p>
+
+<p>Choose a namespace or code name for your plugin</p>
+
+<p><img src="https://wakatime.com/static/img/blog/namespace-your-project.png" alt="Namespace Your Project" /></p>
+
+<h2>Add a Java File</h2>
+
+<p><img src="https://wakatime.com/static/img/blog/create-java-file.png" alt="Create Java File" /></p>
+
+<p><img src="https://wakatime.com/static/img/blog/name-java-file.png" alt="Name Java File" /></p>
+
+<h2>Plugin Starting Point</h2>
+
+<p>After creating the new Java Class file, make it extend <a href="http://bits.netbeans.org/7.4/javadoc/org-openide-modules/org/openide/modules/ModuleInstall.html">ModuleInstall</a> and wrap it with <a href="http://bits.netbeans.org/dev/javadoc/org-openide-windows/org/openide/windows/OnShowing.html">@OnShowing</a> so it only runs after the GUI has loaded.</p>
+
+<p><code>java
+@OnShowing
+public class MyPlugin extends ModuleInstall implements Runnable {
+}
+</code></p>
+
+<p>Press <kbd>ALT</kbd> + <kbd>ENTER</kbd> with your cursor over <code>OnShowing</code> then select <code>Search Module Dependency for OnShowing</code> to import the Window System API into the project. This will add a new dependency to your project as well as add the necessary import statements to the top of your file. Also do this for <code>ModuleInstall</code>.</p>
+
+<p><img src="https://wakatime.com/static/img/blog/search-module-dependency.png" alt="Search Module Dependency" /></p>
+
+<p>Sometimes NetBeans misses the <code>org.openide.util</code> dependency, so you might have to add that one manually. To do that, right click on <keyword>MyPlugin</keyword> then select <code>Properties</code>.</p>
+
+<p><img src="https://wakatime.com/static/img/blog/project-properties.png" alt="Project Properties" /></p>
+
+<p>Choose category <code>Libraries</code> then click <code>Add...</code>. Type <code>org.openide.util</code> then click <code>OK</code>. This will add the dependency to your <code>project.xml</code> file.</p>
+
+<p><img src="https://wakatime.com/static/img/blog/project-properties-libraries.png" alt="Project Properties Libraries" /></p>
+
+<p><img src="https://wakatime.com/static/img/blog/add-utilities-api.png" alt="Add Utilities API" /></p>
+
+<p>Press <kbd>ALT</kbd> + <kbd>ENTER</kbd> on your <keyword>MyPlugin</keyword> class, then choose <code>Implement all abstract methods</code>.</p>
+
+<p><img src="https://wakatime.com/static/img/blog/implement-abstract-methods.png" alt="Implement Abstract Methods" /></p>
+
+<p>One last thing, add this line to your <code>manifest.mf</code> file.</p>
+
+<p><code>OpenIDE-Module-Install: org/myorg/myplugin/MyPlugin.class</code></p>
+
+<p><img src="https://wakatime.com/static/img/blog/openide-module-install.png" alt="OpenIDE Module Install" /></p>
+
+<p>Now the <code>run()</code> method will execute after your plugin has loaded.</p>
+
+<p><img src="https://wakatime.com/static/img/blog/plugin-has-loaded.png" alt="First Time Running" /></p>
+
+<h2>Logging</h2>
+
+<p>Let's make that <code>println</code> output to the NetBeans IDE log. First, setup the logger as an attribute of your <keyword>MyPlugin</keyword> class.</p>
+
+<p><code>java
+public static final Logger log = Logger.getLogger("MyPlugin");
+</code></p>
+
+<p>Press <kbd>ALT</kbd> + <kbd>ENTER</kbd> to import <a href="https://encrypted.google.com/search?q=java.util.logging.Logger+site%3Ahttps%3A%2F%2Fdocs.oracle.com">java.util.logging.Logger</a>.</p>
+
+<p><img src="https://wakatime.com/static/img/blog/add-logger-import.png" alt="Add Logger Import" /></p>
+
+<p>Replace <code>println</code> with <code>log.info("MyPlugin has loaded.");</code>.</p>
+
+<p><img src="https://wakatime.com/static/img/blog/log-line.png" alt="Log Line" /></p>
+
+<h2>Updating Your Plugin Automatically</h2>
+
+<p>Create a new Java file <code>UpdateHandler.java</code> inside your <keyword>MyPlugin</keyword> package.</p>
+
+<p>Replace the contents of this file with <a href="https://gist.github.com/alanhamlett/2a57ffb51f0850272d0d">UpdateHandler.java</a>. Search the module dependency and add any missing dependencies by pressing <kbd>ALT</kbd> + <kbd>ENTER</kbd> over each import statement.</p>
+
+<p>Add these lines to your <code>manifest.mf</code> file.</p>
+
+<p><code>java
+OpenIDE-Module-Layer: org/myorg/myplugin/layer.xml
+OpenIDE-Module-Implementation-Version: 201501010101
+</code></p>
+
+<p>Create a new XML document in your <keyword>MyPlugin</keyword> package.</p>
+
+<p><img src="https://wakatime.com/static/img/blog/new-xml-document.png" alt="New XML Document" /></p>
+
+<p><img src="https://wakatime.com/static/img/blog/name-xml-document.png" alt="Name XML Document" /></p>
+
+<p><code>java
+&lt;?xml version="1.0" encoding="UTF-8"?&gt;
+&lt;!DOCTYPE filesystem PUBLIC "-//NetBeans//DTD Filesystem 1.2//EN" "http://www.netbeans.org/dtds/filesystem-1_2.dtd"&gt;
+&lt;filesystem&gt;
+    &lt;folder name="Services"&gt;
+        &lt;folder name="AutoupdateType"&gt;
+            &lt;file name="org_myorg_myplugin_update_center.instance"&gt;
+                &lt;attr name="displayName" bundlevalue="org.myorg.myplugin.Bundle#Services/AutoupdateType/org_myorg_myplugin_update_center.instance"/&gt;
+                &lt;attr name="enabled" boolvalue="true"/&gt;
+                &lt;attr name="instanceCreate" methodvalue="org.netbeans.modules.autoupdate.updateprovider.AutoupdateCatalogFactory.createUpdateProvider"/&gt;
+                &lt;attr name="instanceOf" stringvalue="org.netbeans.spi.autoupdate.UpdateProvider"/&gt;
+                &lt;attr name="url" bundlevalue="org.myorg.myplugin.Bundle#org_myorg_myplugin_update_center"/&gt;
+            &lt;/file&gt;
+        &lt;/folder&gt;
+    &lt;/folder&gt;
+&lt;/filesystem&gt;
+</code></p>
+
+<p>Add this code to your <keyword>MyPlugin</keyword> class inside the <code>run()</code> method.</p>
+
+<p><code>java
+WindowManager.getDefault().invokeWhenUIReady(new Runnable () {
+    @Override
+    public void run() {
+      UpdateHandler.checkAndHandleUpdates();
+    }
+});
+</code></p>
+
+<p>Add these lines to your <code>Bundle.properties</code> file:</p>
+
+<p><code>java
+Services/AutoupdateType/org_myorg_myplugin_update_center.instance=MyPlugin
+UpdateHandler.NewModules=false
+org_myorg_myplugin_update_center=https\://example.com/updates.xml
+</code></p>
+
+<p>Now every time NetBeans restarts and launches your plugin, it will check for updates by downloading <code>updates.xml</code> from example.com.</p>
+
+<p>Your updates.xml file tells NetBeans where to get the new NBM of your plugin.
+To create an NBM for publishing your plugin, right click on your <keyword>MyPlugin</keyword> project and select <code>Create NBM</code>. The NBM file is what you will publish to the <a href="http://plugins.netbeans.org/">NetBeans Plugin Portal</a>.</p>
+
+<p>For an example of hosting <code>updates.xml</code> on GitHub, look at <a href="https://github.com/wakatime/netbeans-wakatime/blob/master/updates.xml">update.xml</a> and corrosponding <a href="https://github.com/wakatime/netbeans-wakatime/blob/master/src/org/wakatime/netbeans/plugin/Bundle.properties">Bundle.properties</a> from the <a href="https://github.com/wakatime/netbeans-wakatime/">WakaTime NetBeans plugin</a>.</p>

@@ -1,0 +1,47 @@
+{
+    "PRD": "PRD.md",
+    "UML_class": "UML_class.md",
+    "UML_sequence": "UML_sequence.md",
+    "dependencies": "requirements.txt",
+    "architecture_design": "architecture_design.md",
+    "language": "python",
+
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "required_files": [
+        "requirements.txt",
+        "templates/*"
+    ],
+    "setup_shell_script": "setup_shell_script.sh",
+    "unit_test_linking": {
+        "unit_tests/test_lice.py": ["lice/core.py"]
+    },
+
+    "code_file_DAG": {
+        "lice/core.py": []
+    },
+
+    "unit_test_fine_scripts": {
+        "unit_tests/test_lice.py": "pytest --cov=lice --cov-report=term-missing --cov-fail-under=100 unit_tests/test_lice.py"
+    },
+
+    "unit_test_script": "pytest --cov=lice --cov-report=term-missing --cov-fail-under=100 unit_tests",
+    "acceptance_test_script": "pytest --cov=lice --cov-report=term-missing --cov-fail-under=100 acceptance_tests",
+
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_lice.py": "In 'unit_tests/test_lice.py', develop unit tests for the lice.core module. Focus on testing the loading of license templates, insertion of variables like organization and year, and output formatting. Dependencies: unittest, lice.core. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_lice.py": "In 'unit_tests/test_lice.py', execute detailed unit tests. Test 1: Test Paths Functionality. Objective: Validate the clean_path function in the lice.core module. Method: Ensure relative paths are transformed to absolute paths and environment variables are correctly expanded. Expected Result: Paths and environment variables are correctly transformed. Test 2: Test File Template Loading. Objective: Verify the correct loading of license templates from the file system. Method: Compare the content read from the file with the output of load_file_template. Expected Result: Loaded file template content matches the file system content. Test 3: Test Package Template Loading. Objective: Ensure license templates included in the package are loaded correctly. Method: Compare template content from load_template with corresponding file content. Expected Result: Package template content is consistent with file template content. Test 4: Test Extract Variables. Objective: Validate the extract_vars function for correct variable extraction. Method: Write a test string, extract template variables, and verify the extracted list. Expected Result: Correct list of template variables is extracted. Test 5: Test License Content Generation. Objective: Check the generation of license content for all available licenses. Method: Use a context dictionary to replace placeholders in the template and compare with the expected outcome. Expected Result: Generated license content matches the expected outcome. Test 6: Test License Header Generation. Objective: Test the generation of license file headers. Method: Attempt to load header templates for each license and validate the generated content. Expected Result: License headers are generated correctly or skipped if not applicable."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test_acceptance.py": "In 'acceptance_tests/test_acceptance.py', validate the license generation process for various licenses and options. Key objectives include checking if licenses are generated with correct headers, organization names, and years. Dependencies: subprocess, os, sys, tempfile. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test_acceptance.py": "In 'acceptance_tests/test_acceptance.py', conduct detailed acceptance tests. Test 1: Default License Generation. Objective: Confirm the generation of the default license (BSD3) when no specific license is specified. Expected Result: BSD3 license content is generated with the appropriate rights statement. Test 2: Specified License Generation. Objective: Verify the correct generation of a specified license (MIT). Expected Result: MIT license content is generated with the correct permission clause. Test 3: License with Organization Name. Objective: Test the correct replacement of the organization name in the license. Expected Result: The specified organization name appears correctly in the license content. Test 4: License with Year. Objective: Ensure the year is correctly replaced in the license. Expected Result: The specified year appears accurately in the license content. Test 5: License with Project Name. Objective: Check the correct replacement of the project name in the license. Expected Result: The specified project name is correctly included in the license content. Test 6: License Output to File. Objective: Validate the functionality of writing the license to a file. Expected Result: License content is correctly written to the specified output file."
+    },
+
+    "incremental_development": false,
+    "to_implement": " "
+}

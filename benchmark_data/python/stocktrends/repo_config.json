@@ -1,0 +1,54 @@
+{
+    "language": "python",
+
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "docs/requirements.txt",
+    "architecture_design": "docs/architecture_design.md",
+    
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "required_files":["acceptance_samples", "unit_samples", "docs/requirements.txt"],
+    "setup_shell_script": "setup_shell_script.sh",
+
+    "unit_test_linking": {
+        "unit_tests/test_instrument.py": ["stocktrends/indicators.py"],    
+        "unit_tests/test_pnf.py": ["stocktrends/indicators.py"],    
+        "unit_tests/test_renko.py": ["stocktrends/indicators.py"] 
+    },
+    
+    "code_file_DAG": {
+        "stocktrends/indicators.py": []
+    },
+
+    "unit_test_fine_scripts": {
+        "unit_tests/test_instrument.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_instrument.py",    
+        "unit_tests/test_pnf.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_pnf.py",    
+        "unit_tests/test_renko.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_renko.py"
+    },
+    
+    "unit_test_script": "pytest --cov=. --cov-report=json:unit_test_cov.json --json-report --json-report-file=unit_test_report.json unit_tests",
+    "acceptance_test_script": "pytest --cov=. --cov-report=json:acceptance_test_cov.json --json-report --json-report-file=acceptance_test_report.json acceptance_tests",
+
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_instrument.py": "File: test_instrument.py. Purpose: Test the '_validate_df' method in the 'Instrument' class for validating DataFrame input for OHLC columns. Dependencies and Modules: pandas, pytest, stocktrends. Should only use dependencies and modules mentioned in the prompt.",
+        "unit_tests/test_pnf.py": "File: test_pnf.py. Purpose: Test the 'PnF' class methods ('get_state', 'roundit', 'get_bar_ohlc_data') for state determination, rounding logic, and data shape/format. Dependencies and Modules: pandas, pytest, stocktrends. Should only use dependencies and modules mentioned in the prompt.",
+        "unit_tests/test_renko.py": "File: test_renko.py. Purpose: Test the 'get_ohlc_data' method in the 'Renko' class for correct data dimensions and structure. Dependencies and Modules: pandas, pytest, stocktrends. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_instrument.py": "File: test_instrument.py. Purpose: Detailed tests for '_validate_df' method in 'Instrument' class. Test1: Validate DataFrame with correct OHLC columns - ensure input DataFrame has required columns for stock analysis. Test2: Handle DataFrame with missing columns - verify error handling for incomplete data. Function: _validate_df(df). Dependencies and Modules: pandas, pytest, stocktrends. Should only use dependencies and modules mentioned in the prompt.",
+        "unit_tests/test_pnf.py": "File: test_pnf.py. Purpose: Specify subtests for 'PnF' class. Subtest1: 'get_state' - verify correct state (uptrend/downtrend) based on provided parameters, crucial for accurate trend analysis. Subtest2: 'roundit' - test rounding accuracy for various base values, essential for precise data representation. Subtest3: 'get_bar_ohlc_data' - validate data shape for 'close' and 'hl' sources, ensuring data integrity for chart generation. Dependencies and Modules: pandas, pytest, stocktrends. Should only use dependencies and modules mentioned in the prompt.",
+        "unit_tests/test_renko.py": "File: test_renko.py. Purpose: Subtests for 'Renko' class. Subtest1: 'get_ohlc_data' for various brick sizes - assess how different brick sizes affect the chart's data, vital for flexible charting. Subtest2: 'get_ohlc_data' for different chart types - ensure versatility in chart type representation, focusing on data dimensions and content. Dependencies and Modules: pandas, pytest, stocktrends. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test_indicators.py": "File: test_indicators.py. Purpose: Develop acceptance tests for 'Renko' and 'LineBreak' indicators to validate the accuracy of close prices in generated charts. Dependencies and Modules: pandas, numpy, stocktrends. Should only use dependencies and modules mentioned in the prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test_indicators.py": "File: test_indicators.py. Purpose: Detailed acceptance tests for 'Renko' (brick size 4) and 'LineBreak' (line number 3). Subtest1: Renko - validate close prices against expected values, key for ensuring the accuracy of the Renko charting method. Subtest2: LineBreak - compare close prices with expected values, critical for validating the LineBreak chart's reliability in trend analysis. Dependencies and Modules: pandas, numpy, stocktrends. Should only use dependencies and modules mentioned in the prompt."
+    },
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

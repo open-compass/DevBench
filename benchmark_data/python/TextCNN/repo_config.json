@@ -1,0 +1,64 @@
+{
+    "PRD": "PRD.md",
+    "UML_class": "UML_class.md",
+    "UML_sequence": "UML_sequence.md",
+    "dependencies": "requirements.txt",
+    "architecture_design": "architecture_design.md",
+    "language": "python",
+    
+    "unit_tests": "unit_tests",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples": "examples",
+    "required_files": ["requirements.txt"],
+    "setup_shell_script": "setup_shell_script.sh",
+    "src_files": ["modeling.py", "data.py", "train.py", "test.py", "main.py"],
+    
+    "unit_test_linking": {
+        "unit_tests/test_get_args.py": ["main.py"],    
+        "unit_tests/test_building_blocks.py": ["modeling.py"],    
+        "unit_tests/test_output_shape.py": ["modeling.py", "data.py"],    
+        "unit_tests/test_param.py": ["modeling.py", "data.py", "train.py"],    
+        "unit_tests/test_random_seed.py": ["modeling.py", "data.py", "train.py"], 
+        "unit_tests/test_save_best_checkpoints.py": ["modeling.py", "data.py", "train.py"] 
+    },
+    "code_file_DAG": {
+        "main.py": ["modeling.py", "data.py", "train.py", "test.py"]
+    },
+
+    "unit_test_fine_scripts": {
+        "unit_tests/test_get_args.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_get_args.py",    
+        "unit_tests/test_building_blocks.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_building_blocks.py",    
+        "unit_tests/test_output_shape.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_output_shape.py",    
+        "unit_tests/test_param.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_param.py",   
+        "unit_tests/test_random_seed.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_random_seed.py",
+        "unit_tests/test_save_best_checkpoints.py": "pytest --json-report --json-report-file=temp_report.json unit_tests/test_save_best_checkpoints.py"
+    },
+    
+    "unit_test_script": "pytest --cov=. --cov-report=json:unit_test_cov.json --json-report --json-report-file=unit_test_report.json unit_tests",
+    "acceptance_test_script": "pytest --cov=. --cov-report=json:acceptance_test_cov.json --json-report --json-report-file=acceptance_test_report.json acceptance_tests",
+    
+    "coarse_unit_test_prompt": {
+        "unit_tests/test_get_args.py": "Develop unit tests in 'unit_tests/test_get_args.py' for command line argument parsing in TextCNN. Test the handling of missing required arguments, presence of all required arguments, and correctness of argument overrides. Dependencies: unittest. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_building_blocks.py": "Create unit tests in 'unit_tests/test_building_blocks.py' for the TextCNN model's layer construction and integrity. Test the existence and proper ordering of Embedding, Conv2d, Linear, and MaxPool1d (if present) layers. Dependencies: unittest, torch.nn, types. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_output_shape.py": "Formulate unit tests in 'unit_tests/test_output_shape.py' to verify the output shape of TextCNN. Ensure the model's forward pass produces expected output dimensions. Dependencies: unittest, torch, modeling, data, types. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_param.py": "Construct unit tests in 'unit_tests/test_param.py' to check the parameter update process in TextCNN. Confirm updates in embeddings, convolutional, and linear layers during training. Dependencies: unittest, torch, modeling, data, train, types. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_random_seed.py": "Develop unit tests in 'unit_tests/test_random_seed.py' to assess the impact of random seed on TextCNN's training. Verify model consistency with the same seed and differences with varied seeds. Dependencies: unittest, torch, modeling, data, train, types. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_save_best_checkpoints.py": "Draft unit tests in 'unit_tests/test_save_best_checkpoints.py' to evaluate the checkpoint saving mechanism of TextCNN. Ensure saving of the best model checkpoint corresponding to the lowest validation loss. Dependencies: unittest, torch, modeling, data, train, re, os, types. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_unit_test_prompt": {
+        "unit_tests/test_get_args.py": "In 'unit_tests/test_get_args.py', write detailed unit tests for TextCNN's argument parsing: Test1: 'test_missing_required_arguments' checks handling of missing arguments. Test2: 'test_all_required_arguments_present' and Test3: 'test_override_args' for argument presence and overrides. Dependencies: unittest. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_building_blocks.py": "In 'unit_tests/test_building_blocks.py', draft detailed unit tests for TextCNN's model layers: Test1: 'test_layers' checks existence of specific layers. Test2: 'test_ordering' verifies layer sequence. Dependencies: unittest, torch.nn, types. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_output_shape.py": "In 'unit_tests/test_output_shape.py', create detailed unit tests for TextCNN's output shape: Test1: 'test_forward_shape' to validate output dimensions after a forward pass. Dependencies: unittest, torch, modeling, data, types. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_param.py": "In 'unit_tests/test_param.py', formulate detailed unit tests for TextCNN's parameter updates: Test1: 'test_param_update' ensures parameter changes post-training. Dependencies: unittest, torch, modeling, data, train, types. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_random_seed.py": "In 'unit_tests/test_random_seed.py', prepare detailed unit tests for TextCNN's random seed impact: Test1: 'test_same_parameter' for model consistency with same seed. Test2: 'test_different_parameter' for variations with different seeds. Dependencies: unittest, torch, modeling, data, train, types. Should only use dependencies and modules mentioned in this prompt.",
+        "unit_tests/test_save_best_checkpoints.py": "In 'unit_tests/test_save_best_checkpoints.py', create detailed unit tests for TextCNN's checkpoint saving: Test1: 'test_save_best_checkpoints' checks if the best model checkpoint is saved. Dependencies: unittest, torch, modeling, data, train, re, os, types. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test_test.py": "Perform acceptance testing in 'acceptance_tests/test_test.py' for TextCNN. Validate the model's testing performance, ensuring testing accuracy exceeds 0.6. Dependencies: unittest, os, re,torch. Should only use dependencies and modules mentioned in this prompt.",
+        "acceptance_tests/test_train.py": "Conduct acceptance tests in 'acceptance_tests/test_train.py' for TextCNN. Assess the model's training process and performance, verifying improvement in training loss and accuracy, and post-training testing accuracy above 0.6. Dependencies: unittest, os, re,torch. Should only use dependencies and modules mentioned in this prompt.Pay attention to parameter passing to avoid TypeError."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test_test.py": "In 'acceptance_tests/test_test.py', execute detailed acceptance testing for TextCNN's testing phase: Test1: 'test_testing_metric' evaluates if testing accuracy is greater than 0.6. Dependencies: unittest, os, re,torch. Should only use dependencies and modules mentioned in this prompt.",
+        "acceptance_tests/test_train.py": "In 'acceptance_tests/test_train.py', carry out detailed acceptance tests for TextCNN's training phase: Test1: 'test_training_metric' checks training loss and accuracy improvement. Test2: 'test_testing_metric' post-training ensures testing accuracy above 0.6. Dependencies: unittest, os, re,torch. Should only use dependencies and modules mentioned in this prompt.Pay attention to parameter passing to avoid TypeError."
+    }
+}
