@@ -25,7 +25,7 @@
   <img src='./assets/preview.png' width=860>
   </p>
 
-- **DevBench** includes a comprehensive and automatic evaluation suite for all tasks involved. We provide extensive acceptance and unit test cases for the *implementation* task 🤗. Additionally, we utilize [LLM-as-a-Judge](./misc/llm_judge/README.md) for evaluating the *software design* task 👩🏽‍⚖️. Further details on our task specifications can be found [here](./benchmark_data/README.md).
+- **DevBench** includes a comprehensive and automatic evaluation suite for all tasks involved. We provide extensive acceptance and unit test cases for the *implementation* task 🤗. Additionally, we utilize [LLM-as-a-Judge](./llm_judge/README.md) for evaluating the *software design* task 👩🏽‍⚖️. Further details on our task specifications can be found [here](./benchmark_data/README.md).
 
   <p align="center">
   <img src='./assets/tasks.png' width=860>
@@ -142,7 +142,7 @@ Italic figures: test cases for the Environment Setup task are scarce compared to
 
 ### Evaluation results of the software design on DevBench.
 
-The code for the software design evaluation can be found [here](./misc/llm_judge/)👩🏽‍⚖️.
+The code for the software design evaluation can be found [here](./llm_judge/)👩🏽‍⚖️.
 
 <table align="center">
      <tr>
@@ -301,7 +301,7 @@ python run.py --config Implementation --input_path ../../benchmark_data/python/T
   - `normal`: Coding and CodeReview in alternation, with CodeReview lacking program execution feedback.
   - `execution`: Coding and CodeReview in alternation, with CodeReview including program execution feedback.
 - read_src_code (*bool*) - Whether to read source code in the AcceptanceTesting and UnitTesting tasks.
-- evaluate (*bool*) - Whether to evaluate in the end. The evaluation for the software design can be found [here](./misc/llm_judge/).
+- evaluate (*bool*) - Whether to evaluate in the end. The evaluation for the software design can be found [here](./llm_judge/).
 - temperature (*float*) - temperature
 - top_p (*float*) - top_p
 

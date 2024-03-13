@@ -19,7 +19,7 @@ Architectural design is aimed at crafting a structured layout of source code, co
 - General principles include cohesion and decoupling, and practicability.
 - Faithfulness gauges the extent to which models adhere to specified instructions.
 
-[Learn More](../misc/llm_judge/README.md).
+[Learn More](../llm_judge/README.md).
 
 ### Task 2: Environment Setup
 
