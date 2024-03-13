@@ -1,0 +1,47 @@
+Reponse length
++---+------------------------------+--------+-------+
+|   |            model             |  mean  |  std  |
++---+------------------------------+--------+-------+
+| 0 |      gpt-3.5-turbo-1106      | 384.5  |  7.5  |
+| 1 |          gpt-4-0613          | 557.5  | 107.5 |
+| 2 |      gpt-4-1106-preview      | 767.5  |  6.5  |
+| 3 |      gpt-4-0125-preview      | 730.0  | 60.0  |
+| 4 |    codellama-7b-instruct     | 3402.0 | 136.0 |
+| 5 |    codellama-13b-instruct    | 644.5  | 144.5 |
+| 6 |    codellama-34b-instruct    | 748.0  | 182.0 |
+| 7 | deepseek-coder-1.3b-instruct | 330.5  | 78.5  |
+| 8 | deepseek-coder-6.7b-instruct | 515.5  | 22.5  |
+| 9 | deepseek-coder-33b-instruct  | 456.5  | 31.5  |
++---+------------------------------+--------+-------+
+Total comparisons: 80. Failed to response: 0
+Total comparisons: 80. Non exact matches:  72
+Extracted 72 answers from the responses (extraction success rate 100.00%)
+42 out of 72 answers are consistent. (A vs. B <-> B vs. A) The consistent rate is 58.33%
+(Win + Draw / 2) w. gpt-3.5-turbo-1106: 
++---+------------------------------+--------------+-----+-----------+------------------------+-------------------+
+|   |            model             | Overall-lang | EN  | uml_class | uml_class-faithfulness | uml_class-general |
++---+------------------------------+--------------+-----+-----------+------------------------+-------------------+
+| 7 |    codellama-34b-instruct    |     1.0      | 1.0 |    1.0    |          1.0           |        0.0        |
+| 0 |      gpt-4-0125-preview      |     1.0      | 1.0 |    1.0    |          1.0           |        1.0        |
+| 6 |      gpt-4-1106-preview      |     1.0      | 1.0 |    1.0    |          1.0           |        1.0        |
+| 3 |          gpt-4-0613          |     1.0      | 1.0 |    1.0    |          1.0           |        1.0        |
+| 8 |    codellama-13b-instruct    |     0.5      | 0.5 |    0.5    |          0.5           |        0.0        |
+| 4 | deepseek-coder-1.3b-instruct |     0.0      | 0.0 |    0.0    |          0.0           |        0.0        |
+| 5 |    codellama-7b-instruct     |     0.0      | 0.0 |    0.0    |          0.0           |        0.0        |
+| 2 | deepseek-coder-6.7b-instruct |     0.0      | 0.0 |    0.0    |          0.0           |        0.0        |
+| 1 | deepseek-coder-33b-instruct  |     0.0      | 0.0 |    0.0    |          0.0           |        0.0        |
++---+------------------------------+--------------+-----+-----------+------------------------+-------------------+
+(Win + Both Good) w. gpt-3.5-turbo-1106: 
++---+------------------------------+--------------+-----+-----------+------------------------+-------------------+
+|   |            model             | Overall-lang | EN  | uml_class | uml_class-faithfulness | uml_class-general |
++---+------------------------------+--------------+-----+-----------+------------------------+-------------------+
+| 7 |    codellama-34b-instruct    |     1.0      | 1.0 |    1.0    |          1.0           |        0.0        |
+| 0 |      gpt-4-0125-preview      |     1.0      | 1.0 |    1.0    |          1.0           |        1.0        |
+| 6 |      gpt-4-1106-preview      |     1.0      | 1.0 |    1.0    |          1.0           |        1.0        |
+| 3 |          gpt-4-0613          |     1.0      | 1.0 |    1.0    |          1.0           |        1.0        |
+| 8 |    codellama-13b-instruct    |     0.5      | 0.5 |    0.5    |          0.5           |        0.0        |
+| 4 | deepseek-coder-1.3b-instruct |     0.0      | 0.0 |    0.0    |          0.0           |        0.0        |
+| 5 |    codellama-7b-instruct     |     0.0      | 0.0 |    0.0    |          0.0           |        0.0        |
+| 2 | deepseek-coder-6.7b-instruct |     0.0      | 0.0 |    0.0    |          0.0           |        0.0        |
+| 1 | deepseek-coder-33b-instruct  |     0.0      | 0.0 |    0.0    |          0.0           |        0.0        |
++---+------------------------------+--------------+-----+-----------+------------------------+-------------------+

@@ -1,0 +1,1 @@
+- The architecture must be in strict accordance with the given PRD and UML class diagrams. It should accurately reflect the requirements specified in the PRD and the structural design outlined in the UML diagrams, ensuring a coherent and consistent development process.

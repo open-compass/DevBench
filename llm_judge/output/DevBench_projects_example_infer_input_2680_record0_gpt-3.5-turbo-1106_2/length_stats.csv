@@ -1,0 +1,11 @@
+model,mean,std
+gpt-3.5-turbo-1106,384.5,7.5
+gpt-4-0613,557.5,107.5
+gpt-4-1106-preview,767.5,6.5
+gpt-4-0125-preview,730.0,60.0
+codellama-7b-instruct,3402.0,136.0
+codellama-13b-instruct,644.5,144.5
+codellama-34b-instruct,748.0,182.0
+deepseek-coder-1.3b-instruct,330.5,78.5
+deepseek-coder-6.7b-instruct,515.5,22.5
+deepseek-coder-33b-instruct,456.5,31.5

@@ -1,0 +1,3 @@
+model,mean,std
+gpt-3.5-turbo-1106,384.5,7.5
+gpt-4-0125-preview,730.0,60.0
