@@ -5,7 +5,12 @@
 
 # DevBench: Towards LLMs based Automated Software Development
 
-👋 [Overview](#👋-overview) | 📖 [Benchmarking](#📖-benchmarking-code-llms) | ⚙️ [Setup](#⚙️-set-up-with-docker-🐳) | 🚀 [Usage](#🚀-usage) | 🔎 [Citation](#🔎-citation) | ⚖️ [License](#⚖️-license)
+  👋 <a href="#-overview">Overview</a> |
+  📖 <a href="#-benchmarking-code-llms">Benchmarking</a> |
+  ⚙️ <a href="#-set-up-with-docker">Setup</a> |
+  🚀 <a href="#-usage">Usage</a> |
+  🔎 <a href="#-citation">Citation</a>  |
+  📝 <a href="#-license">License</a>
 
 **📬 Contact**: libowen.ne@gmail.com, chao.peng@acm.org
 
@@ -220,7 +225,7 @@ The code for the software design evaluation can be found [here](./misc/llm_judge
 </table>
 Win rate of pairwise comparison against GPT-3.5-Turbo on Software Desgin on a subset of DevBench where results are averaged across different repositories and sub-tasks uniformly.†: the general principles metric. ‡: the faithfulness metric. w/ Tie: inconsistent results are considered as a tie. We also report agreement with Human Majority.
 
-## ⚙️ Set Up with Docker 🐳
+## 🐳 Set Up with Docker
 
 For a secure and isolated environment, we offer Docker support for DevBench. Please refer to our detailed [Installation Guide](./wiki.md#installation-guide).
 
@@ -313,7 +318,7 @@ When you use normal review and execution review, the `cyclenum` parameter of `Co
 xxx
 ```
 
-## ⚖️ License
+## 📝 License
 
 - Source Code Licensing: Our project's source code is licensed under the Apache 2.0 License. This license permits the use, modification, and distribution of the code, subject to certain conditions outlined in the Apache 2.0 License.
 - Data Licensing: The related data utilized in our project is licensed under CC BY 4.0, which allows anyone to copy, distribute, transmit, adapt and make commercial use of the dataset.
