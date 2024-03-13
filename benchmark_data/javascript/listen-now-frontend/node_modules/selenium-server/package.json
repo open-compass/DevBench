@@ -1,0 +1,33 @@
+{
+  "author": "Didit Tech <developers@didit.com>",
+  "contributors": [
+    "Eugene Ware <eugene@noblesamurai.com>",
+    "Dariusz Siedlecki <datrio@gmail.com>",
+    "Artemy Tregubenko <me@arty.name>",
+    "Igor Muchychka <mucsi_96@yahoo.com>"
+  ],
+  "name": "selenium-server",
+  "description": "Selenium in an npm package",
+  "version": "3.141.59",
+  "keywords": [
+    "bdd",
+    "tdd",
+    "selenium",
+    "server",
+    "standalone",
+    "testing"
+  ],
+  "main": "lib/selenium-server.js",
+  "bin": {
+    "selenium": "./bin/selenium"
+  },
+  "readmeFilename": "README.md",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/eugeneware/selenium-server.git"
+  },
+  "license": "BSD-3-Clause"
+}

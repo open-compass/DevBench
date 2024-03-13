@@ -1,0 +1,76 @@
+{
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "docs/requirements.txt",
+    "architecture_design": "docs/architecture_design.md",
+    "language": "java",
+    "required_files":["gradle/*", "gradlew", "gradlew.bat", "settings.gradle"],
+    "setup_shell_script": "setup_shell_script.sh",
+
+    "unit_tests": "src/test/java/Actor_relationship_game",
+    "acceptance_tests": "src/acceptanceTest/java/Actor_relationship_game",
+    "usage_examples": "examples",
+    "unit_test_linking": {
+        "src/test/java/Actor_relationship_game/ActorGraphTest.java": ["src/main/java/Actor_relationship_game/ActorGraph.java","src/main/java/Actor_relationship_game/Movie.java","src/main/java/Actor_relationship_game/Actor.java"],    
+        "src/test/java/Actor_relationship_game/ActorGraphUtilTest.java": ["src/main/java/Actor_relationship_game/ActorGraphUtil.java","src/main/java/Actor_relationship_game/ActorGraph.java","src/main/java/Actor_relationship_game/Movie.java","src/main/java/Actor_relationship_game/Actor.java"],  
+        "src/test/java/Actor_relationship_game/GameplayInterfaceTest.java": ["src/main/java/Actor_relationship_game/GameplayInterface.java","src/main/java/Actor_relationship_game/ActorGraph.java","src/main/java/Actor_relationship_game/Movie.java","src/main/java/Actor_relationship_game/Actor.java"],
+        "src/test/java/Actor_relationship_game/GraphCreationTest.java": ["src/main/java/Actor_relationship_game/GraphCreation.java","src/main/java/Actor_relationship_game/TMDBApi.java","src/main/java/Actor_relationship_game/Movie.java","src/main/java/Actor_relationship_game/Actor.java"],
+        "src/test/java/Actor_relationship_game/MovieTest.java": ["src/main/java/Actor_relationship_game/Movie.java"],
+        "src/test/java/Actor_relationship_game/ActorTest.java": ["src/main/java/Actor_relationship_game/Actor.java"],
+        "src/test/java/Actor_relationship_game/TMDBApiTest.java": ["src/main/java/Actor_relationship_game/TMDBApi.java"]
+
+    },
+    
+    "code_file_DAG": {
+        "src/main/java/Actor_relationship_game/ActorGraph.java":["src/main/java/Actor_relationship_game/Actor.java","src/main/java/Actor_relationship_game/Movie.java"],
+        "src/main/java/Actor_relationship_game/GraphCreation.java":["src/main/java/Actor_relationship_game/ActorGraph.java","src/main/java/Actor_relationship_game/TMDBApi.java"],
+        "src/main/java/Actor_relationship_game/ActorGraphUtil.java":["src/main/java/Actor_relationship_game/ActorGraph.java"],
+        "src/main/java/Actor_relationship_game/GameplayInterface.java":["src/main/java/Actor_relationship_game/ActorGraph.java"],
+        "build.gradle": ["src/main/java/Actor_relationship_game/GameplayInterface.java", "src/main/java/Actor_relationship_game/ActorGraphUtil.java", "src/main/java/Actor_relationship_game/GraphCreation.java"]
+    },
+
+    "unit_test_fine_scripts": {
+        "src/test/java/Actor_relationship_game/ActorGraphTest.java": "./gradlew test --tests Actor_relationship_game.ActorGraphTest jacocoTestReport",
+        "src/test/java/Actor_relationship_game/ActorGraphUtilTest.java": "./gradlew test --tests Actor_relationship_game.ActorGraphUtilTest jacocoTestReport",
+        "src/test/java/Actor_relationship_game/GameplayInterfaceTest.java": "./gradlew test --tests Actor_relationship_game.GameplayInterfaceTest jacocoTestReport",
+        "src/test/java/Actor_relationship_game/GraphCreationTest.java": "./gradlew test --tests Actor_relationship_game.GraphCreationTest jacocoTestReport",
+        "src/test/java/Actor_relationship_game/MovieTest.java": "./gradlew test --tests Actor_relationship_game.MovieTest jacocoTestReport",
+        "src/test/java/Actor_relationship_game/ActorTest.java": "./gradlew test --tests Actor_relationship_game.ActorTest jacocoTestReport",
+        "src/test/java/Actor_relationship_game/TMDBApiTest.java": "./gradlew test --tests Actor_relationship_game.TMDBApiTest jacocoTestReport"
+    },
+    
+    "unit_test_script": "./gradlew test",
+    "acceptance_test_script": "./gradlew acceptanceTest",
+    
+    "coarse_unit_test_prompt": {
+        "src/test/java/Actor_relationship_game/ActorGraphTest.java": "ActorGraphTest: Purpose: Test graph operations in ActorGraph. Tests: Adding actors, movies, and actor-movie connections. Dependencies: Relies on Actor and Movie classes. Modules: java.util.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/ActorGraphUtilTest.java": "ActorGraphUtilTest: Purpose: Test utility functions for ActorGraph. Tests: Loading graph from a file, writing actors to a file. Dependencies: Utilizes file operations. Modules: java.io.*, java.util.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/GameplayInterfaceTest.java": "GameplayInterfaceTest: Purpose: Test Gameplay Interface's integration with ActorGraph. Tests: ActorGraph interactions, serialization, and deserialization. Dependencies: Depends on ActorGraph, Actor, and Movie classes. Modules: java.io.*, java.util.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/GraphCreationTest.java": "GraphCreationTest: Purpose: Test graph creation and serialization. Tests: Graph creation, file serialization and deserialization. Dependencies: Uses file I/O operations. Modules: java.io.*, java.util.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/MovieTest.java": "MovieTest: Purpose: Test Movie class properties. Tests: Handling movie ID, title, and actor IDs. Dependencies: Independent testing of Movie class. Modules: java.util.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/ActorTest.java": "ActorTest: Purpose: Test Actor class properties. Tests: Managing actor ID, name, and movie IDs. Dependencies: Independent testing of Actor class. Modules: java.util.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/TMDBApiTest.java": "TMDBApiTest: Purpose: Test TMDB API integration. Tests: Fetching movies by actor ID, searching popular actors. Dependencies: Makes actual requests to TMDB API. Modules: java.io.*, java.net.*, java.util.*. Should only use dependencies and modules mentioned in the prompt."
+    },
+
+    "fine_unit_test_prompt": {
+        "src/test/java/Actor_relationship_game/ActorGraphTest.java": "ActorGraphTest: Purpose: Validate functionality of ActorGraph class. Tests: Test1: addActor - Checks adding a new actor to the graph, Test2: addMovie - Verifies adding a new movie to the graph, Test3: addActorToMovie - Confirms linking actors to movies correctly, Test4: findConnectionWithPath - Ensures correct identification of connection paths between actors. Dependencies: Actor, Movie classes. Modules: java.util.*, org.junit.jupiter.api.*, static org.junit.jupiter.api.Assertions.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/ActorGraphUtilTest.java": "ActorGraphUtilTest: Purpose: Ensure ActorGraph utility functions work correctly. Tests: Test1: loadGraph - Validates the loading of ActorGraph from a file, Test2: writeActorsToFile - Checks the functionality of writing actor names to a file. Dependencies: File I/O operations. Modules: java.io.*, java.util.*, org.junit.jupiter.api.*, static org.junit.jupiter.api.Assertions.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/GameplayInterfaceTest.java": "GameplayInterfaceTest: Purpose: Test ActorGraph interaction with Gameplay Interface. Tests: Test1: loadGraph - Verifies the loading of serialized ActorGraph objects, Test2: writeActorsToFile - Confirms correct writing of actor names to a file for the gameplay interface. Dependencies: ActorGraph class. Modules: java.io.*, java.util.*, org.junit.jupiter.api.*, static org.junit.jupiter.api.Assertions.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/GraphCreationTest.java": "GraphCreationTest: Purpose: Assess GraphCreation's ability to create and manage ActorGraphs. Tests: Test1: createGraph - Tests the creation and initialization of a new ActorGraph, Test2: graphFileCreation - Verifies the creation of a file after graph generation, Test3: graphFileContent - Checks the content integrity of the serialized graph file. Dependencies: File I/O operations. Modules: java.io.*, java.util.*, org.junit.jupiter.api.*, static org.junit.jupiter.api.Assertions.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/MovieTest.java": "MovieTest: Purpose: Validate the functionality of the Movie class. Tests: Test1: movieIdAndTitle - Ensures correct handling of movie ID and title, Test2: actorIds - Tests the management and update of associated actor IDs in a movie. Dependencies: Independent testing of Movie class. Modules: java.util.*, org.junit.jupiter.api.*, static org.junit.jupiter.api.Assertions.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/ActorTest.java": "ActorTest: Purpose: Confirm the Actor class functions as intended. Tests: Test1: actorIdAndName - Checks the correct handling of actor ID and name, Test2: movieIds - Verifies the management of movie IDs associated with an actor. Dependencies: Independent testing of Actor class. Modules: java.util.*, org.junit.jupiter.api.*, static org.junit.jupiter.api.Assertions.*. Should only use dependencies and modules mentioned in the prompt.",
+        "src/test/java/Actor_relationship_game/TMDBApiTest.java": "TMDBApiTest: Purpose: Ensure accurate TMDB API integration and responses. Tests: Test1: getMoviesByActorId - Tests fetching movies linked to a specific actor ID, Test2: searchPopularActors - Confirms functionality of searching for popular actors in the TMDB database. Dependencies: Actual requests to TMDB API. Modules: java.io.*, java.net.*, java.util.*, org.junit.jupiter.api.*, static org.junit.jupiter.api.Assertions.*. Should only use dependencies and modules mentioned in the prompt."
+    },
+
+    "coarse_acceptance_test_prompt": {
+        "src/acceptanceTest/java/Actor_relationship_game/ActorRelationshipAcceptanceTest.java": "ActorRelationshipAcceptanceTest: Purpose: Validate the end-to-end functionality of the Actor Relationship game. Tests: File generation and content verification. Dependencies: Involves file I/O operations and integration with ActorGraph, TMDB API. Modules: java.io.*, java.util.*, java.nio.file.*, org.junit.jupiter.api.*, static org.junit.jupiter.api.Assertions.*. Should only use dependencies and modules mentioned in the prompt."
+    },
+
+    "fine_acceptance_test_prompt": {
+        "src/acceptanceTest/java/Actor_relationship_game/ActorRelationshipAcceptanceTest.java": "ActorRelationshipAcceptanceTest: Purpose: Conduct thorough acceptance testing for the ActorGraph application. Tests: Test1: generatedFiles - Validates the existence and correctness of generated files for graph, actors, and results, ensuring end-to-end file generation works as expected. Test2: actorGraph - Compares the serialized graph files between reference and test cases to ensure consistency and correctness in graph serialization. Test3: actorList - Checks the accuracy of the actor lists generated, verifying that the list matches expected output. Test4: connectionResults - Confirms the accuracy of connection results between actors, validating the logic of pathfinding and connection reporting in the gameplay. Dependencies: Utilizes file I/O, ActorGraph, and TMDB API integrations. Modules: java.io.*, java.util.*, java.nio.file.*, org.junit.jupiter.api.*, static org.junit.jupiter.api.Assertions.*. Should only use dependencies and modules mentioned in the prompt."
+    },
+    
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

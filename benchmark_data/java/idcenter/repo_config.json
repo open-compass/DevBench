@@ -1,0 +1,55 @@
+{
+    "language": "java",
+
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "docs/architecture_design.md",
+
+    "unit_tests": "src/test/java/com/sohu/idcenter",
+    "acceptance_tests": "src/acceptanceTest/java/acceptancetest",
+    "usage_examples":"examples",
+    "setup_shell_script": "",
+
+    "required_files": [
+        "gradle",
+        "gradlew",
+        "settings.gradle"
+    ],
+
+    "unit_test_linking": {
+        "src/test/java/com/sohu/idcenter/Base62Test.java": ["src/main/java/com/sohu/idcenter/Base62.java"],
+        "src/test/java/com/sohu/idcenter/IdTest.java": ["src/main/java/com/sohu/idcenter/IdWorker.java"]
+    },
+
+    "code_file_DAG": {
+        "src/main/java/com/sohu/idcenter/Main.java": ["src/main/java/com/sohu/idcenter/Base62.java", "src/main/java/com/sohu/idcenter/IdWorker.java", "src/main/java/com/sohu/idcenter/SidWorker.java"],
+        "build.gradle": ["src/main/java/com/sohu/idcenter/Main.java"]
+    },
+
+    "unit_test_script": "./gradlew test",
+    "acceptance_test_script": "./gradlew acceptanceTest",
+
+
+
+    "coarse_unit_test_prompt": {
+        "src/test/java/com/sohu/idcenter/Base62Test.java": "Create unit tests in './src/test/java/com/sohu/idcenter/Base62Test.java' for the Base62 class. Test 'testEncode()' to ensure the encoding works correctly and the encoded value is correct. Test 'testDecode()' to ensure the decoding works correctly and the decoded value is correct. Use Assertions for validation. Dependencies: org.junit.jupiter.api.Assertions. Should only use dependencies and modules mentioned in this prompt.",
+        "src/test/java/com/sohu/idcenter/IdTest.java": "Develop unit tests in './src/test/java/com/sohu/idcenter/IdTest.java' for the IdWorker class. Test 'testIdWorker()' to verify IDWorker produces IDs correctly. Test 'testSidWorker()' to verify SidWorker produces IDs correctly. Validate using Assertions. Dependencies: org.junit.jupiter.api.Assertions. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_unit_test_prompt": {
+        "src/test/java/com/sohu/idcenter/Base62Test.java": "In './src/test/java/com/sohu/idcenter/Base62Test.java', write detailed unit tests for Base62 class. Test1: 'testEncode()' checks the encoding. Test2: 'testDecode' checks the decoding. Dependencies: org.junit.jupiter.api.Assertions. Should only use dependencies and modules mentioned in this prompt.",
+        "src/test/java/com/sohu/idcenter/IdTest.java": "In './src/test/java/com/sohu/idcenter/IdTest.java', formulate detailed unit tests for IdWorker.Test 'testIdWorker()' to verify IDWorker produces IDs correctly. Test 'testSidWorker()' to verify SidWorker produces IDs correctly. Dependencies: org.junit.jupiter.api.Assertions. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "src/acceptanceTest/java/acceptancetest/IdcenterTest.java": "Construct an acceptance test in './src/acceptanceTest/java/acceptancetest/IdcenterTest.java' for the id_center project. The test should execute ID generation operations, verify the output format, and ensure the correctness. Utilize ParseException, SimpleDateFormat, Date, HashSet, Set for testing. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "src/acceptanceTest/java/acceptancetest/IdcenterTest.java": "Develop a detailed acceptance test in './src/acceptanceTest/java/acceptancetest/IdcenterTest.java' for id_center. Test id generation operations, check output format, and validate results. Dependencies: ParseException, SimpleDateFormat, Date, HashSet, Set. Should only use dependencies and modules mentioned in this prompt."
+    },
+
+
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

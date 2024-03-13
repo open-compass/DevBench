@@ -1,0 +1,54 @@
+{
+    "language": "java",
+
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "docs/architecture_design.md",
+
+    "unit_tests": "src/test/java/image/similarity",
+    "acceptance_tests": "src/acceptanceTest/java/imagesimilarity",
+    "usage_examples":"examples",
+
+    "required_files": [
+        "gradle",
+        "imgs",
+        "gradlew",
+        "input.txt"
+    ],
+
+    "unit_test_linking": {
+        "src/test/java/image/similarity/ImagePHashTest.java": ["src/main/java/image/similarity/ImagePHash.java"],
+        "src/test/java/image/similarity/ImgHistogramTest.java": ["src/main/java/image/similarity/ImageHistogram.java"]
+    },
+
+    "code_file_DAG": {
+        "src/main/java/image/similarity/Main.java": ["src/main/java/image/similarity/ImagePHash.java", "src/main/java/image/similarity/ImageHistogram.java"],
+        "build.gradle": ["src/main/java/image/similarity/Main.java"]
+    },
+
+    "unit_test_script": "./gradlew test",
+    "acceptance_test_script": "./gradlew acceptanceTest",
+
+
+    "coarse_unit_test_prompt": {
+        "src/test/java/image/similarity/ImagePHashTest.java": "Create unit tests in './src/test/java/image/similarity/ImagePHashTest.java' for the ImagePHash class. Test 'testImgPHash()' to ensure the distance calculation works correctly. Use Assertions for validation. Dependencies: org.junit.jupiter.api.Assertions and org.junit.jupiter.api.Test. Should only use dependencies and modules mentioned in this prompt.",
+        "src/test/java/image/similarity/ImgHistogramTest.java": "Develop unit tests in './src/test/java/image/similarity/ImgHistogramTest.java' for the ImageHistogram class. Test 'testImageHistogram()' to verify histogram match works correctly. Dependencies: org.junit.jupiter.api.Assertions and org.junit.jupiter.api.Test. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_unit_test_prompt": {
+        "src/test/java/image/similarity/ImagePHashTest.java": "In './src/test/java/image/similarity/ImagePHashTest.java', write detailed unit tests for ImagePHash class. Test1: 'testImgPHash()' checks the distance calculation. Dependencies: org.junit.jupiter.api.Assertions and org.junit.jupiter.api.Test. Should only use dependencies and modules mentioned in this prompt.",
+        "src/test/java/image/similarity/ImgHistogramTest.java": "In './src/test/java/image/similarity/ImgHistogramTest.java', formulate detailed unit tests for ImageHistogram.Test 'ImgHistogramTest()' to verify histogram match. Dependencies: org.junit.jupiter.api.Assertions and org.junit.jupiter.api.Test. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "src/acceptanceTest/java/imagesimilarity/ImageSimilarityAcceptanceTest.java": "Construct an acceptance test in './src/acceptanceTest/java/imagesimilarity/ImageSimilarityAcceptanceTest.java' for the image_similarity project and evaluate its modules. Utilize IOException, File, URL, junit.jupiter.api.Assertions and org.junit.jupiter.api.Test. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "src/acceptanceTest/java/imagesimilarity/ImageSimilarityAcceptanceTest.java": "Develop a detailed acceptance test in './src//acceptanceTest/java/imagesimilarity/ImageSimilarityAcceptanceTest.java' for the image_similarity project and evaluate its modules. Check the correctness of ImageHistogram and ImagePHash modules. Utilize IOException, File, URL, junit.jupiter.api.Assertions and org.junit.jupiter.api.Test. Should only use dependencies and modules mentioned in this prompt."
+    },
+
+
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

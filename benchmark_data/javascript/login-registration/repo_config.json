@@ -1,0 +1,90 @@
+{
+    "language": "javascript",
+
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "docs/architecture_design.md",
+
+    "unit_tests": "test",
+    "acceptance_tests": "test",
+    "usage_examples":"examples",
+    "setup_shell_script": "npm install",
+
+    "required_files": [
+        "src/_helpers/auth-headers.js",
+        "src/_helpers/fake-backend.js",
+        "src/_helpers/index.js",
+        "src/_helpers/router.js",
+        "src/_services/index.js",
+        "src/_services/user.service.js",
+        "src/_store/account.module.js",
+        "src/_store/alert.module.js",
+        "src/_store/index.js",
+        "src/_store/users.module.js",
+        ".babelrc",
+        "jest.config.js",
+        "webpack.config.js",
+        "package.json",
+        "package-lock.json"
+    ],
+
+    "unit_test_linking": {
+        "test/HomePage.spec.js": [
+            "test/unit/specs/HelloWorld.spec.js",
+            "src/main.js"
+        ],
+        "test/LoginPage.spec.js": [
+            "test/unit/specs/HelloWorld.spec.js",
+            "src/main.js"
+        ],
+        "test/RegisterPage.spec.js": [
+            "test/unit/specs/HelloWorld.spec.js",
+            "src/main.js"
+        ]
+    },
+
+    "code_file_DAG": {
+        "src/app/App.vue": [],
+        "src/home/HomePage.vue": [],
+        "src/login/LoginPage.vue": [],
+        "src/register/RegisterPage.vue": [],
+        "src/index.js": [
+            "src/_helpers/auth-headers.js",
+            "src/_helpers/fake-backend.js",
+            "src/_helpers/index.js",
+            "src/_helpers/router.js",
+            "src/_services/index.js",
+            "src/_services/user.service.js",
+            "src/_store/account.module.js",
+            "src/_store/alert.module.js",
+            "src/_store/index.js",
+            "src/_store/users.module.js"        ],
+        "src/index.html": [
+            "src/index.js"
+        ]
+    },
+
+    "unit_test_script": "npm install;npm run coverage",
+    "acceptance_test_script": "npm install;npm run coverage",
+
+    "coarse_unit_test_prompt": {},
+    "fine_unit_test_prompt": {},
+
+    "coarse_acceptance_test_prompt": {
+        "test/HomePage.spec.js": "Construct an acceptance test in './test/HomePage.spec.js' for the user login and registration project using Jest UI unit test. The test should initialise the local storage and check if the home page component is rendered correctly.",
+        "test/LoginPage.spec.js": "Construct an acceptance test in './test/LoginPage.spec.js' for the user login and registration project using Jest UI unit test. The test should initialise the local storage and check if the login page component is rendered correctly.",
+        "test/RegisterPage.spec.js": "Construct an acceptance test in './test/RegisterPage.spec.js' for the user login and registration project using Jest UI unit test. The test should initialise the local storage and check if the register page component is rendered correctly."
+    },
+    "fine_acceptance_test_prompt": {
+        "test/HomePage.spec.js": "Construct an acceptance test in './test/HomePage.spec.js' for the user login and registration project using Jest UI unit test. The test should initialise the local storage (account and users in state) and check if the home page component is rendered correctly.",
+        "test/LoginPage.spec.js": "Construct an acceptance test in './test/LoginPage.spec.js' for the user login and registration project using Jest UI unit test. The test should initialise the local storage (state.loggingIn in state) and check if the login page component is rendered correctly.",
+        "test/RegisterPage.spec.js": "Construct an acceptance test in './test/RegisterPage.spec.js' for the user login and registration project using Jest UI unit test. The test should initialise the local storage (state.registering in state) and check if the register page component is rendered correctly."
+    },
+
+
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

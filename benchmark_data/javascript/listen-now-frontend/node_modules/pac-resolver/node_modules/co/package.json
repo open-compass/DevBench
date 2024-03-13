@@ -1,0 +1,31 @@
+{
+  "name": "co",
+  "version": "3.0.6",
+  "description": "generator async flow control goodness",
+  "keywords": [
+    "async",
+    "flow",
+    "generator",
+    "coro",
+    "coroutine"
+  ],
+  "devDependencies": {
+    "should": "~1.2.2",
+    "mocha": "~1.12.0",
+    "q": "~0.9.4",
+    "thunkify": "^2.0.0",
+    "request": "~2.27.0",
+    "matcha": "~0.4.0"
+  },
+  "scripts": {
+    "test": "make test"
+  },
+  "files": [
+    "index.js"
+  ],
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/visionmedia/co.git"
+  }
+}

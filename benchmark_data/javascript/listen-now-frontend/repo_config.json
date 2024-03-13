@@ -1,0 +1,74 @@
+{
+    "language": "javascript",
+
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "docs/architecture_design.md",
+
+    "unit_tests": "test/unit",
+    "acceptance_tests": "test/unit",
+    "usage_examples":"examples",
+    "setup_shell_script": "npm install",
+
+    "required_files": [
+        "build/build.js",
+        "build/check-versions.js",
+        "build/utils.js",
+        "build/vue-loader.conf.js",
+        "build/webpack.base.conf.js",
+        "build/webpack.dev.conf.js",
+        "build/webpack.prod.conf.js",
+        "build/webpack.test.conf.js",
+        "config/dev.env.js",
+        "config/index.js",
+        "config/prod.env.js",
+        "config/test.env.js",
+        "package-lock.json",
+        "package.json",
+        "index.html",
+        "test/unit/karma.conf.js"
+    ],
+
+    "unit_test_linking": {
+        "test/unit/index.js": [
+            "test/unit/specs/HelloWorld.spec.js",
+            "src/main.js"
+        ],
+        "test/unit/specs/HelloWorld.spec.js": [
+            "src/components/HelloWorld.vue"
+        ]
+    },
+
+    "code_file_DAG": {
+        "src/components/HelloWorld.vue": [],
+        "src/router/index.js": [
+            "src/components/HelloWorld.vue"
+        ],
+        "src/main.js": [
+            "src/App.vue",
+            "src/router/index.js"
+        ]
+    },
+
+    "unit_test_script": "rm -rf node_modules;export PATH=$PATH:$(pwd)/node_modules/phantomjs-prebuilt/lib/phantom/bin/;wget https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip;npm install; npm run build;export OPENSSL_CONF=/dev/null;npm run unit",
+    "acceptance_test_script": "rm -rf node_modules;export PATH=$PATH:$(pwd)/node_modules/phantomjs-prebuilt/lib/phantom/bin/;wget https://chromedriver.storage.googleapis.com/2.46/chromedriver_linux64.zip;npm install; npm run build;export OPENSSL_CONF=/dev/null;npm run unit",
+
+    "coarse_unit_test_prompt": {},
+    "fine_unit_test_prompt": {},
+
+    "coarse_acceptance_test_prompt": {
+        "test/unit/index.js": "Construct an acceptance test in './test/unit/index.js' for the listen_now_frontend project. The test should export the Router to the HelloWorld component.",
+        "test/unit/specs/HelloWorld.spec.js": "Construct an acceptance test in ./test/unit/specs/HelloWorld.spec.js for the listen_now_frontend project. The test should check if the HelloWorld component is rendered correctly."
+    },
+    "fine_acceptance_test_prompt": {
+        "test/unit/index.js": "Construct an acceptance test in './test/unit/index.js' for the listen_now_frontend project. The test should export the Router to the HelloWorld component.",
+        "test/unit/specs/HelloWorld.spec.js": "Construct an acceptance test in ./test/unit/specs/HelloWorld.spec.js for the listen_now_frontend project. The test should check if the HelloWorld component is rendered correctly. Its .hello h1 element should have the text 'Welcome to Your vue.js App'"
+    },
+
+
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

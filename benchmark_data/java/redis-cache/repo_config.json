@@ -1,0 +1,104 @@
+{
+    "language": "java",
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "docs/architecture_design.md",
+    "unit_tests": "src/test/java/org/mybatis/caches/redis",
+    "acceptance_tests": "src/acceptanceTest/java/rediscache",
+    "usage_examples": "examples",
+    "setup_shell_script": "setup_shell_script.sh",
+    "required_files": [
+        "gradlew",
+        "input.txt",
+        "acceptance_test_script.sh",
+        "unit_test_script.sh",
+        "gradle"
+    ],
+    "unit_test_linking": {
+        "src/test/java/org/mybatis/caches/redis/sslconfig/TestHostnameVerifier.java": [],
+        "src/test/java/org/mybatis/caches/redis/sslconfig/TestSSLParameters.java": [],
+        "src/test/java/org/mybatis/caches/redis/sslconfig/TestSSLSocketFactory.java": [],
+        "src/test/java/org/mybatis/caches/redis/RedisConfigurationBuilderTest.java": [
+            "src/main/java/org/mybatis/caches/redis/RedisConfigurationBuilder.java"
+        ],
+        "src/test/java/org/mybatis/caches/redis/RedisTestCase.java": [
+            "src/main/java/org/mybatis/caches/redis/RedisCache.java"
+        ],
+        "src/test/java/org/mybatis/caches/redis/SerializerTestCase.java": [
+            "src/main/java/org/mybatis/caches/redis/Serializer.java"
+        ],
+        "src/test/java/org/mybatis/caches/redis/SimpleBeanCourseInfo.java": [
+            ""
+        ],
+        "src/test/java/org/mybatis/caches/redis/SimpleBeanStudentInfo.java": [
+            ""
+        ]
+    },
+
+    "code_file_DAG": {
+        "src/main/java/org/mybatis/caches/redis/DummyReadWriteLock.java": [],
+        "src/main/java/org/mybatis/caches/redis/JDKSerializer.java": [],
+        "src/main/java/org/mybatis/caches/redis/KryoSerializer.java": [],
+        "src/main/java/org/mybatis/caches/redis/RedisCache.java": [],
+        "src/main/java/org/mybatis/caches/redis/RedisCallback.java": [],
+        "src/main/java/org/mybatis/caches/redis/RedisConfig.java": [],
+        "src/main/java/org/mybatis/caches/redis/Serializer.java": [],
+        "src/main/java/org/mybatis/caches/redis/Main.java": [
+            "src/main/java/org/mybatis/caches/redis/RedisCache.java",
+            "src/main/java/org/mybatis/caches/redis/RedisConfig.java",
+            "src/main/java/org/mybatis/caches/redis/RedisConfigurationBuilder.java",
+            "src/main/java/org/mybatis/caches/redis/RedisCallback.java"
+        ],
+        "src/main/java/org/mybatis/caches/redis/RedisConfigurationBuilder.java": ["src/main/java/org/mybatis/caches/redis/RedisConfig.java"],
+        "build.gradle": ["src/main/java/org/mybatis/caches/redis/RedisConfigurationBuilder.java", "src/main/java/org/mybatis/caches/redis/Main.java"]
+    },
+    "unit_test_script": "sh unit_test_script.sh",
+    "acceptance_test_script": "sh acceptance_test_script.sh",
+
+    "coarse_unit_test_prompt": {
+        "src/test/java/org/mybatis/caches/redis/sslconfig/TestHostnameVerifier.java": "Create TestHostnameVerifier in './src/test/java/org/mybatis/caches/redis/sslconfig/TestHostnameVerifier.java' which implements javax.net.ssl.HostnameVerifier and overrides verify function to return false",
+
+        "src/test/java/org/mybatis/caches/redis/sslconfig/TestSSLParameters.java": "Create TestSSLParameters class in './src/test/java/org/mybatis/caches/redis/sslconfig/TestSSLParameters.java' that extends javax.net.ssl.SSLParameters",
+
+        "src/test/java/org/mybatis/caches/redis/sslconfig/TestSSLSocketFactory.java": "Create TestSSLSocketFactory class in './src/test/java/org/mybatis/caches/redis/sslconfig/TestSSLSocketFactory.java' that extends javax.net.ssl.SSLSocketFactory and overrides createSocket to return null, getDefaultCipherSuites to return null, getSupportedCipherSuites  to return null, createSocket to return null",
+
+        "src/test/java/org/mybatis/caches/redis/RedisConfigurationBuilderTest.java": "Create unit tests in './src/test/java/org/mybatis/caches/redis/RedisConfigurationBuilderTest.java' for the RedisConfigurationBuilder class. Test 'testDefaults()' to for default configs, test 'test1()' for customised configs and after() to restore configs after each unit test. Use Assertions for validation. Dependencies: org.junit.jupiter.api. Should only use dependencies and modules mentioned in this prompt.",
+
+        "src/test/java/org/mybatis/caches/redis/RedisTestCase.java": "Create unit tests in './src/test/java/org/mybatis/caches/redis/RedisTestCase.java' for the RedisCache class. Setup function 'newCache()' to create a new RedisCache instance. Tests 'shouldDemonstrateCopiesAreEqual()' 'shouldRemoveItemOnDemand()', 'shouldFlushAllItemsOnDemand()', 'shouldNotCreateCache()', 'shouldVerifyCacheId()', 'shouldVerifyToString()', 'shouldDeleteExpiredCache()' according to their names. Use Assertions for validation. Dependencies: org.junit.jupiter.api. Should only use dependencies and modules mentioned in this prompt.",
+
+        "src/test/java/org/mybatis/caches/redis/SerializerTestCase.java": "Create unit tests in './src/test/java/org/mybatis/caches/redis/SerializerTestCase.java' for the kryoSerializer and jdkSerializer of the Serializer class. Tests 'testKryoUnserializeNull()', 'testJDKUnserializeNull()', 'testKryoSerialize()', 'testKryoFallbackSerialize()', 'testKryoSerializeMultiThread()', 'testKryoUnserializeWithoutRegistryWithFile()', 'testJDKSerialize()', 'testSerializeCofig()' according to their names. Use Assertions for validation. Dependencies: org.junit.jupiter.api.Assertions. Should only use dependencies and modules mentioned in this prompt.",
+
+        "src/test/java/org/mybatis/caches/redis/SimpleBeanCourseInfo.java": "Create the SimpleBeanCourseInfo for unit tests in './src/test/java/org/mybatis/caches/redis/SimpleBeanCourseInfo.java'. The class implements Serializable and has two fields: name and id. They are set to \"Machine Learning\" and 101 in the constructor. The class has getName(), setName(String name), getID(), setId(int id), toString() and equals(Object obj) functions.",
+
+        "src/test/java/org/mybatis/caches/redis/SimpleBeanStudentInfo.java": "Create SimpleBeanStudentInfo in './src/test/java/org/mybatis/caches/redis/SimpleBeanStudentInfo.java' for unit tests. The class implements Serializable and has five fields: String name, int age, int grade, String sex, ArrayList<String> courses. They are set to \"Kobe Byrant\", 40, 12, \"MALE\", [\"English\", \"Math\", \"Physics\"] in the constructor. All fields have getters and setters. The class also have toString() and equals(Object obj) functions."
+    },
+    "fine_unit_test_prompt": {
+        "src/test/java/org/mybatis/caches/redis/sslconfig/TestHostnameVerifier.java": "Create TestHostnameVerifier in './src/test/java/org/mybatis/caches/redis/sslconfig/TestHostnameVerifier.java' which implements javax.net.ssl.HostnameVerifier and overrides verify function to return false",
+
+        "src/test/java/org/mybatis/caches/redis/sslconfig/TestSSLParameters.java": "Create TestSSLParameters class in './src/test/java/org/mybatis/caches/redis/sslconfig/TestSSLParameters.java' that extends javax.net.ssl.SSLParameters",
+
+        "src/test/java/org/mybatis/caches/redis/sslconfig/TestSSLSocketFactory.java": "Create TestSSLSocketFactory class in './src/test/java/org/mybatis/caches/redis/sslconfig/TestSSLSocketFactory.java' that extends javax.net.ssl.SSLSocketFactory and overrides createSocket to return null, getDefaultCipherSuites to return null, getSupportedCipherSuites  to return null, createSocket to return null",
+
+        "src/test/java/org/mybatis/caches/redis/RedisConfigurationBuilderTest.java": "Create unit tests in './src/test/java/org/mybatis/caches/redis/RedisConfigurationBuilderTest.java' for the RedisConfigurationBuilder class. Test 'testDefaults()' to for default configs, test 'test1()' for customised configs and after() to restore configs after each unit test. Use Assertions for validation. Dependencies: org.junit.jupiter.api. Should only use dependencies and modules mentioned in this prompt.",
+
+        "src/test/java/org/mybatis/caches/redis/RedisTestCase.java": "Create unit tests in './src/test/java/org/mybatis/caches/redis/RedisTestCase.java' for the RedisCache class. Setup function 'newCache()' to create a new RedisCache instance. Tests 'shouldDemonstrateCopiesAreEqual()' 'shouldRemoveItemOnDemand()', 'shouldFlushAllItemsOnDemand()', 'shouldNotCreateCache()', 'shouldVerifyCacheId()', 'shouldVerifyToString()', 'shouldDeleteExpiredCache()' according to their names. Use Assertions for validation. Dependencies: org.junit.jupiter.api. Should only use dependencies and modules mentioned in this prompt.",
+
+        "src/test/java/org/mybatis/caches/redis/SerializerTestCase.java": "Create unit tests in './src/test/java/org/mybatis/caches/redis/SerializerTestCase.java' for the kryoSerializer and jdkSerializer of the Serializer class. Tests 'testKryoUnserializeNull()', 'testJDKUnserializeNull()', 'testKryoSerialize()', 'testKryoFallbackSerialize()', 'testKryoSerializeMultiThread()', 'testKryoUnserializeWithoutRegistryWithFile()', 'testJDKSerialize()', 'testSerializeCofig()' according to their names. Use Assertions for validation. Dependencies: org.junit.jupiter.api.Assertions. Should only use dependencies and modules mentioned in this prompt.",
+
+        "src/test/java/org/mybatis/caches/redis/SimpleBeanCourseInfo.java": "Create the SimpleBeanCourseInfo for unit tests in './src/test/java/org/mybatis/caches/redis/SimpleBeanCourseInfo.java'. The class implements Serializable and has two fields: name and id. They are set to \"Machine Learning\" and 101 in the constructor. The class has getName(), setName(String name), getID(), setId(int id), toString() and equals(Object obj) functions.",
+
+        "src/test/java/org/mybatis/caches/redis/SimpleBeanStudentInfo.java": "Create SimpleBeanStudentInfo in './src/test/java/org/mybatis/caches/redis/SimpleBeanStudentInfo.java' for unit tests. The class implements Serializable and has five fields: String name, int age, int grade, String sex, ArrayList<String> courses. They are set to \"Kobe Byrant\", 40, 12, \"MALE\", [\"English\", \"Math\", \"Physics\"] in the constructor. All fields have getters and setters. The class also have toString() and equals(Object obj) functions."
+    },
+
+    "coarse_acceptance_test_prompt": {
+        "src/acceptanceTest/java/rediscache/RedisCacheAcceptanceTest.java": "Construct an acceptance test in './src/acceptanceTest/java/rediscache/RedisCacheAcceptanceTest.java' for the redis_cache project. The test should test cache put and get functionalities. Utilize HashMap, Map and Random and org.junit.jupiter.api. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "src/acceptanceTest/java/rediscache/RedisCacheAcceptanceTest.java": "Develop a detailed acceptance test in './src/acceptanceTest/java/rediscache/RedisCacheAcceptanceTest.java' for the redis_cache project. The test should test cache put and get functionalities. Utilize HashMap, Map and Random and org.junit.jupiter.api. Should only use dependencies and modules mentioned in this prompt."
+    },
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

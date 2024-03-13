@@ -1,0 +1,52 @@
+{
+    "language": "java",
+
+    "PRD": "docs/PRD.md",
+    "UML_class": "docs/UML_class.md",
+    "UML_sequence": "docs/UML_sequence.md",
+    "dependencies": "",
+    "architecture_design": "docs/architecture_design.md",
+
+    "unit_tests": "src/test/java/test",
+    "acceptance_tests": "acceptance_tests",
+    "usage_examples":"examples",
+    "setup_shell_script": "setup_shell_script.sh",
+
+    "required_files": [
+        "gradle/*", "gradlew", "gradlew.bat", "settings.gradle.kts"
+    ],
+
+    "unit_test_linking": {
+        "src/test/java/test/FibonacciHeapTest.java": ["src/main/java/code/FibonacciHeap.java"],
+        "src/test/java/test/LeftistHeapTest.java": ["src/main/java/code/LeftistHeap.java"]
+    },
+
+    "code_file_DAG": {
+        "src/main/java/code/HeapPerformanceTest.java": ["src/main/java/code/FibonacciHeap.java", "src/main/java/code/LeftistHeap.java"],
+        "build.gradle.kts": ["src/test/java/test/LeftistHeapTest.java", "src/test/java/test/FibonacciHeapTest.java"]
+
+    },
+
+    "unit_test_script": "./gradlew test",
+    "acceptance_test_script": "python acceptance_tests/test.py",
+
+    "coarse_unit_test_prompt": {
+        "src/test/java/test/FibonacciHeapTest.java": "Create unit tests in './src/test/java/java_heap/FibonacciHeapTest.java' for the FibonacciHeap class. Test 'testHeap()' to ensure the insertion and deletion operations work correctly and the minimum value is maintained. Use Assertions for validation. Dependencies: org.junit.jupiter.api.Assertions. Should only use dependencies and modules mentioned in this prompt.",
+        "src/test/java/test/LeftistHeapTest.java": "Develop unit tests in './src/test/java/java_heap/LeftistHeapTest.java' for the LeftistHeap class. Test 'testLeftistHeap()' to verify heap operations like insertion, in-order traversal, extraction, and clearing. Validate using Assertions. Dependencies: org.junit.jupiter.api.Assertions. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_unit_test_prompt": {
+        "src/test/java/test/FibonacciHeapTest.java": "In './src/test/java/java_heap/FibonacciHeapTest.java', write detailed unit tests for FibonacciHeap. Test1: 'testHeap()' checks insertions, deletions, and minimum value maintenance. Dependencies: org.junit.jupiter.api.Assertions. Should only use dependencies and modules mentioned in this prompt.",
+        "src/test/java/test/LeftistHeapTest.java": "In './src/test/java/java_heap/LeftistHeapTest.java', formulate detailed unit tests for LeftistHeap. Test1: 'testLeftistHeap()' ensures proper heap functionality including insertion, in-order traversal, min extraction, and clearing. Dependencies: org.junit.jupiter.api.Assertions. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "coarse_acceptance_test_prompt": {
+        "acceptance_tests/test.py": "Construct an acceptance test in './acceptance_tests/test.py' for the java_heap project. The script shoud first build the project by running ./gradlew build jar and then interact with the project using java-jar build/libs/java_heap-1.0-SNAPSHOT.jar. The test should execute heap operations, verify the output format, and ensure the correctness of operation timings. Utilize subprocess, sys, os, re, collections.Counter for testing. Should only use dependencies and modules mentioned in this prompt."
+    },
+    "fine_acceptance_test_prompt": {
+        "acceptance_tests/test.py": "Develop a detailed acceptance test in './acceptance_tests/test.py' for java_heap. The script shoud first build the project by running ./gradlew build jar and then interact with the project using java-jar build/libs/java_heap-1.0-SNAPSHOT.jar. Test heap operations, check output format, and validate operation timings. Dependencies: subprocess, sys, os, re, collections.Counter. Should only use dependencies and modules mentioned in this prompt."
+    },
+
+
+
+    "incremental_development": false,
+    "to_implement": "path_to_implement"
+}

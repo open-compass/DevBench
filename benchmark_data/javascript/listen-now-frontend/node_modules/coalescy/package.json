@@ -1,0 +1,40 @@
+{
+  "name": "coalescy",
+  "version": "1.0.0",
+  "description": "Simple function that return the first non null or undefined argument ",
+  "main": "index.js",
+  "scripts": {
+    "test": "mocha-runner './specs/**/*.js'",
+    "lint": "eslint --format 'node_modules/eslint-friendly-formatter' lib/ bin/ specs/ -c './configs/eslint.json'",
+    "coverage": "istanbul cover -x 'specs/**/*.js' mocha-runner 'specs/**/*.js' html text-summary",
+    "coverage-cache": "istanbul cover -x 'specs/**/*.js' mocha-runner 'specs/**/*.js' html text-summary -- --useCache=true",
+    "watch": "npm run coverage && watch-spawn -p 'specs/**/*.js' -p 'bin/**/*.js' -p 'lib/**/*.js' npm run coverage-cache"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/royriojas/coalescy.git"
+  },
+  "keywords": [
+    "coalesce",
+    "first",
+    "not",
+    "null",
+    "first",
+    "not",
+    "undefined",
+    "utility"
+  ],
+  "author": "Roy Riojas",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/royriojas/coalescy/issues"
+  },
+  "homepage": "https://github.com/royriojas/coalescy",
+  "devDependencies": {
+    "eslint": "^0.16.1",
+    "eslint-friendly-formatter": "^1.0.3",
+    "istanbul": "^0.3.7",
+    "mocha-runner": "^1.0.0",
+    "watch-spawn": "^1.0.2"
+  }
+}
