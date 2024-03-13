@@ -54,15 +54,6 @@
         <th style="text-align:center">Coverage$</th>
     </tr>
     <tr>
-        <td style="text-align:center">Claude3-Opus</td>
-        <td style="text-align:center"><em></em></td>
-        <td style="text-align:center"></td>
-        <td style="text-align:center"></td>
-        <td style="text-align:center"></td>
-        <td style="text-align:center"></td>
-        <td style="text-align:center"></td>
-    </tr>
-    <tr>
         <td style="text-align:center">GPT-3.5-Turbo</td>
         <td style="text-align:center"><em>33.3</em></td>
         <td style="text-align:center">4.2</td>
@@ -166,7 +157,14 @@ The code for the software design evaluation can be found [here](./misc/llm_judge
         <th style="text-align:center">Faithfulness</th>
     </tr>
     <tr>
-        <td style="text-align:center">GPT-4-Turbo</td>
+        <td style="text-align:center">GPT-4-Turbo-0125</td>
+        <td style="text-align:center">97.9</td>
+        <td style="text-align:center">97.9</td>
+        <td style="text-align:center">100.0</td>
+        <td style="text-align:center">100.0</td>
+    </tr>
+    <tr>
+        <td style="text-align:center">GPT-4-Turbo-1106</td>
         <td style="text-align:center">91.7</td>
         <td style="text-align:center">85.4</td>
         <td style="text-align:center">100.0</td>
