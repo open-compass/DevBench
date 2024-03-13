@@ -1,0 +1,18 @@
+__pycache__
+**/__pycache__/
+*.pyc
+.DS_Store
+.idea
+.vscode
+
+# env
+.env/
+.venv/
+env/
+venv/
+
+WareHouse/
+WareHouse_d/
+output_files/
+test*/
+WareHouse*/

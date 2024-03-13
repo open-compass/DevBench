@@ -1,0 +1,52 @@
+{
+  "AcceptanceTestCoding": {
+  "assistant_role_name": "Tester",
+  "user_role_name": "Senior Engineer",
+    "phase_prompt": [
+      "PRD: \"{prd}\".",
+      "UML_class: \"{uml_class}\".",
+      "UML_sequence: \"{uml_sequence}\".",
+      "ArchitectureDesign: \"{architecture_design}\".",
+      "Codes: \"{codes}\".",
+      "Acceptance Test Prompt: \"{acceptance_test_prompt}\"",
+      "Execution Feedback : \"{execution_feedback}\".",
+      "Code Modification: \"{code_modification}\".",
+      "FileGenerationInstructions: The model is required to generate files based on the provided filename. The generated files must match the specified filename exactly, and the model should neither generate fewer nor more files than specified. The filenames are as follows: \"{filename}\".",
+      "AcceptanceTestCoding Filename: \"{filename}\".",
+      "Each acceptance test file should follow the following structure:",
+      "{{FileName}}",
+      "```{{Language}}",
+      "'''",
+      "{{DocString}}",
+      "'''",
+      "{{Code}}",
+      "```",
+      "For example:",
+      "test_xxxx.py",
+      "```python",
+      "'''",
+      "Acceptance test",
+      "'''",
+      "Code",
+      "```",
+      "As the {assistant_role}, {coding_prompt}",
+      "It is imperative to strictly follow the specified markdown format for code submission. Non-compliance will unequivocally result in your code being rejected and not processed for execution. You must follow the given format.",
+      "If Execution Feedback and Code Modification is present, please follow the Code Modification to address these issues. If there is no Execution Feedback, kindly follow the Code Modification and refine your code."
+    ]
+},
+  "AcceptanceTestCodeReview": {
+  "assistant_role_name": "Senior Engineer",
+  "user_role_name": "Tester",
+    "phase_prompt": [
+      "PRD: \"{prd}\".",
+      "Codes: \"{codes}\".",
+      "Acceptance Test Prompt: \"{acceptance_test_prompt}\"",
+      "Acceptance Test Codes: \"{acceptance_test_codes}\".",
+      "Execution Feedback : \"{execution_feedback}\".",
+      "As the {assistant_role}, you should write an acceptance test code review based on the following rules:",
+      "The acceptance test must and can only fulfill all the requirements in the prompts.",
+      "The acceptance test is able to run on the given code scripts.",
+      "If the Execution Feedback is present, please provide an acceptance test code review to address these issues. If there is no Execution Feedback, kindly review the code and offer review independently."
+    ]
+}
+}

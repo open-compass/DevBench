@@ -1,0 +1,9 @@
+{
+    "codellama-7b-instruct": "",
+    "codellama-13b-instruct": "",
+    "codellama-34b-instruct": "",
+    "deepseek-coder-1.3b-instruct": "",
+    "deepseek-coder-6.7b-instruct": "",
+    "deepseek-coder-33b-instruct": "",
+    "customized-model": {"deepseek-coder-6.7b-instruct": "model_ip_address"}
+}

@@ -1,0 +1,38 @@
+
+{
+  "chain": [
+    {
+      "phase": "Implementation",
+      "phaseType": "ComposedPhase",
+      "cycleNum": 2,
+      "Composition": [
+        {
+          "phase": "CodeReview",
+          "phaseType": "SimplePhase",
+          "max_turn_step": 1,
+          "need_reflect": "False"
+        },
+        {
+          "phase": "Coding",
+          "phaseType": "SimplePhase",
+          "max_turn_step": 1,
+          "need_reflect": "False"
+        }
+      ]
+    }
+  ],
+  "recruitments": [
+    "Programmer",
+    "Chief Technology Officer",
+    "Tester",
+    "Senior Engineer"
+  ],
+  "clear_structure": "True",
+  "brainstorming": "False",
+  "gui_design": "False",
+  "git_management": "False",
+  "self_improve": "False",
+  "incremental_develop": "False"
+}
+
+
