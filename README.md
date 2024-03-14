@@ -314,7 +314,14 @@ When you use normal review and execution review, the `cyclenum` parameter of `Co
 ## 🔎 Citation
 
 ```
-xxx
+@misc{li2024devbench,
+      title={DevBench: A Comprehensive Benchmark for Software Development}, 
+      author={Bowen Li and Wenhan Wu and Ziwei Tang and Lin Shi and John Yang and Jinyang Li and Shunyu Yao and Chen Qian and Binyuan Hui and Qicheng Zhang and Zhiyin Yu and He Du and Ping Yang and Dahua Lin and Chao Peng and Kai Chen},
+      year={2024},
+      eprint={2403.08604},
+      archivePrefix={arXiv},
+      primaryClass={cs.CL}
+}
 ```
 
 ## 📝 License
