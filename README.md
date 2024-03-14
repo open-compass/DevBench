@@ -10,10 +10,11 @@
   ⚙️ <a href="#-set-up-with-docker">Setup</a> |
   🚀 <a href="#-usage">Usage</a> |
   🔎 <a href="#-citation">Citation</a>  |
-  📝 <a href="#-license">License</a>
+  📄 <a href="#-license">License</a>
 
 **📬 Contact**: libowen.ne@gmail.com, chao.peng@acm.org
 
+📝 Check out our paper [HERE](https://arxiv.org/abs/2403.08604) !
 
 ## 👋 Overview
 
@@ -324,7 +325,7 @@ When you use normal review and execution review, the `cyclenum` parameter of `Co
 }
 ```
 
-## 📝 License
+## 📄 License
 
 - Source Code Licensing: Our project's source code is licensed under the Apache 2.0 License. This license permits the use, modification, and distribution of the code, subject to certain conditions outlined in the Apache 2.0 License.
 - Data Licensing: The related data utilized in our project is licensed under CC BY 4.0, which allows anyone to copy, distribute, transmit, adapt and make commercial use of the dataset.
