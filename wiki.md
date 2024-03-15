@@ -8,19 +8,25 @@ Ensure Docker is installed on your system. For installation instructions, please
 
 ### 1. Prepare the docker image
 
-DevBench offers two versions of Docker images: the base version and the complete version. Choose the one that fits your needs:
+DevBench offers two versions of Docker images: the base version and the complete version. Select the appropriate version based on your requirements:
 
 |   Tag    | dep. for DevBench utilities and baseline system | dep. for Python repos | dep. for C++/Java/JS repos |
 | :------: | :-------------------------------------------------: | :-------------------: | :------------------------: |
 |   [base](./docker/base/)   |                       ✅                            |          ❌           |     ❌                     |
 | [complete](./docker/complete/) |                       ✅                            |          ✅           |     ❌                     |
 
-- Base version: The base version contains the dependencies for the DevBench utilities and the baseline agent system. Utilities provided by the base version contains:
-  - Compiler, testing, build and package management tools: gcc and g++ 11, GoogleTest, Java 14, Python 3.11, node.js, cmake and MiniConda.
-  - C++, JS and Java repository-specific third-party tools, such as Redis for the Java redis-cache repository and Sqlite for the C++ database management repository.
-  - Necessary packages to get the baseline agent system running.
-- Complete version: In addition to all packages provided by the base version,
-  - Complete dependencies for all Python repositories.
+- **Base Version:** Ideal for evaluating environment setup tasks, this version provides a clean and initial setting with essential tools. It is tailored for scenarios where a clean, minimal environment is crucial. It includes:
+  - Core dependencies for DevBench utilities and the baseline system.
+  - Key utilities such as compilers (gcc, g++ 11), GoogleTest, Java 14, Python 3.11, node.js, cmake, and MiniConda.
+  - Specific third-party tools for C++, JS, and Java repositories, like Redis for Java redis-cache and Sqlite for the C++ database management repository.
+  - Essential packages to operate the baseline agent system efficiently.
+
+- **Complete Version:** Recommended for implementation and testing tasks, it encompasses everything in the base version plus:
+  - Comprehensive dependencies for all Python repositories, facilitating a seamless development experience without the hassle of manual dependency management.
+
+**Note:** Our evaluation of environment setup primarily targets Python and JavaScript projects. We've chosen to concentrate on these languages because they have well-established tools for package management, unlike C++. C++ lacks a universally accepted package manager, which makes standardized environment setup challenging. In contrast, Java projects often incorporate their own comprehensive build and package management systems, commonly utilizing scripts like Gradle. Therefore, our environment setup process is less relevant to Java projects. Instead, for Java, we integrate the environment setup evaluation with the implementation phase. During this combined phase, the model or agent is required to execute a complete Gradle script, which includes all necessary dependency listings and build instructions.
+
+This structured approach ensures that developers can choose the most suitable environment, enhancing their efficiency and the overall development workflow.
 
 #### Option 1: Build from dockerfiles
 
