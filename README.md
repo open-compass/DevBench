@@ -315,13 +315,11 @@ When you use normal review and execution review, the `cyclenum` parameter of `Co
 ## 🔎 Citation
 
 ```
-@misc{li2024devbench,
-      title={DevBench: A Comprehensive Benchmark for Software Development}, 
-      author={Bowen Li and Wenhan Wu and Ziwei Tang and Lin Shi and John Yang and Jinyang Li and Shunyu Yao and Chen Qian and Binyuan Hui and Qicheng Zhang and Zhiyin Yu and He Du and Ping Yang and Dahua Lin and Chao Peng and Kai Chen},
-      year={2024},
-      eprint={2403.08604},
-      archivePrefix={arXiv},
-      primaryClass={cs.CL}
+@article{li2024devbench,
+  title={DevBench: A Comprehensive Benchmark for Software Development},
+  author={Li, Bowen and Wu, Wenhan and Tang, Ziwei and Shi, Lin and Yang, John and Li, Jinyang and Yao, Shunyu and Qian, Chen and Hui, Binyuan and Zhang, Qicheng and others},
+  journal={arXiv preprint arXiv:2403.08604},
+  year={2024}
 }
 ```
 
