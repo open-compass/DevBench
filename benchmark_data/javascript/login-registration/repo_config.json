@@ -50,17 +50,7 @@
         "src/home/HomePage.vue": [],
         "src/login/LoginPage.vue": [],
         "src/register/RegisterPage.vue": [],
-        "src/index.js": [
-            "src/_helpers/auth-headers.js",
-            "src/_helpers/fake-backend.js",
-            "src/_helpers/index.js",
-            "src/_helpers/router.js",
-            "src/_services/index.js",
-            "src/_services/user.service.js",
-            "src/_store/account.module.js",
-            "src/_store/alert.module.js",
-            "src/_store/index.js",
-            "src/_store/users.module.js"        ],
+        "src/index.js": [],
         "src/index.html": [
             "src/index.js"
         ]
