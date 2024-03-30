@@ -39,7 +39,7 @@
 ### Evaluation results of the coding tasks on DevBench.
 <table border-collapse:collapse;border:none;>
     <tr >
-        <td rowspan="2" style="text-align:center">Model</td>
+        <td rowspan="2" style="text-align:center"><b>Model</b></td>
         <th style="text-align:center">Environment Setup</th>
         <th colspan="2" style="text-align:center">Implementation</th>
         <th style="text-align:center">Acceptance Testing</th>
@@ -146,7 +146,7 @@ The code for the software design evaluation can be found [here](./llm_judge/)ðŸ‘
 
 <table align="center">
      <tr>
-        <td rowspan="2" style="text-align:center">Model</td>
+        <td rowspan="2" style="text-align:center"><b>Model</b></td>
         <td colspan="2" style="text-align:center"><b>w/ Tie</b></td>
         <td colspan="2" style="text-align:center"><b>w/o Tie</b></td>
     </tr>
