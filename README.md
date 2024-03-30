@@ -39,14 +39,13 @@
 ### Evaluation results of the coding tasks on DevBench.
 <table border-collapse:collapse;border:none;>
     <tr >
-        <th style="text-align:center" border: 1px solid black;>Task</th>
+        <td rowspan="2">Model</td>
         <th style="text-align:center">Environment Setup</th>
         <th colspan="2" style="text-align:center">Implementation</th>
         <th style="text-align:center">Acceptance Testing</th>
         <th colspan="2" style="text-align:center">Unit Testing</th>
     </tr>
      <tr >
-        <th style="text-align:center">Evaluation Metric (%)</th>
         <th style="text-align:center">Pass@ Example Usage§</th>
         <th style="text-align:center">Pass@ Accept. Test¶ </th>
         <th style="text-align:center">Pass@ Unit Test¶</th>
@@ -147,7 +146,7 @@ The code for the software design evaluation can be found [here](./llm_judge/)�
 
 <table align="center">
      <tr>
-        <td rowspan="2"></td>
+        <td rowspan="2">Model</td>
         <td colspan="2" style="text-align:center"><b>w/ Tie</b></td>
         <td colspan="2" style="text-align:center"><b>w/o Tie</b></td>
     </tr>
