@@ -38,15 +38,14 @@
 
 ### Evaluation results of the coding tasks on DevBench.
 <table border-collapse:collapse;border:none;>
-    <tr >
-        <th style="text-align:center" border: 1px solid black;>Task</th>
+    <tr>
+        <th rowspan="2" style="text-align:center"><b>Model</b></th>
         <th style="text-align:center">Environment Setup</th>
         <th colspan="2" style="text-align:center">Implementation</th>
         <th style="text-align:center">Acceptance Testing</th>
         <th colspan="2" style="text-align:center">Unit Testing</th>
     </tr>
-     <tr >
-        <th style="text-align:center">Evaluation Metric (%)</th>
+     <tr>
         <th style="text-align:center">Pass@ Example Usage§</th>
         <th style="text-align:center">Pass@ Accept. Test¶ </th>
         <th style="text-align:center">Pass@ Unit Test¶</th>
@@ -109,7 +108,6 @@
         <td style="text-align:center">25.4(72.6)</td>
     </tr>
     <tr>
-       <tr>
         <td style="text-align:center">DeepSeek-Coder-1.3B-Instruct</td>
         <td style="text-align:center"><em>8.3</em></td>
         <td style="text-align:center">0.0</td>
@@ -117,7 +115,6 @@
         <td style="text-align:center">0.0</td>
         <td style="text-align:center">5.6</td>
         <td style="text-align:center">2.7(27.0)</td>
-      </tr>
     <tr>
         <td style="text-align:center">DeepSeek-Coder-6.7B-Instruct</td>
         <td style="text-align:center"><em>25.0</em></td>
@@ -147,9 +144,9 @@ The code for the software design evaluation can be found [here](./llm_judge/)�
 
 <table align="center">
      <tr>
-        <td rowspan="2"></td>
-        <td colspan="2" style="text-align:center"><b>w/ Tie</b></td>
-        <td colspan="2" style="text-align:center"><b>w/o Tie</b></td>
+        <th rowspan="2" style="text-align:center"><b>Model</b></th>
+        <th colspan="2" style="text-align:center"><b>w/ Tie</b></th>
+        <th colspan="2" style="text-align:center"><b>w/o Tie</b></th>
     </tr>
     <tr>
         <th style="text-align:center">General Principles† </th>
